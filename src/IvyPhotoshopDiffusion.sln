@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32519.111
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IvyPhotoshopDiffusion", "IvyPhotoshopDiffusion\IvyPhotoshopDiffusion.csproj", "{3197ECFB-7E16-45CC-9E16-B66CAAC0CCF1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3197ECFB-7E16-45CC-9E16-B66CAAC0CCF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3197ECFB-7E16-45CC-9E16-B66CAAC0CCF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3197ECFB-7E16-45CC-9E16-B66CAAC0CCF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3197ECFB-7E16-45CC-9E16-B66CAAC0CCF1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D9B3019D-287B-48A3-87F0-A5AB8B9258B9}
+	EndGlobalSection
+EndGlobal
