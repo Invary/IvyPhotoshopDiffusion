@@ -53,6 +53,12 @@ latest version of [IvyPhotoshopDiffusion](https://github.com/Invary/IvyPhotoshop
 
 <br />
 
+##  Documents
+
+see [Documents](https://github.com/Invary/IvyPhotoshopDiffusion/doc/README.md) page.
+
+<br />
+
 
 ##  Privacy policy
 
