@@ -41,7 +41,8 @@ latest version of [IvyPhotoshopDiffusion](https://github.com/Invary/IvyPhotoshop
 1. [Download](https://github.com/AUTOMATIC1111/stable-diffusion-webui) latest version of **`Automatic1111 Stable Diffusion web UI (Automatic1111)`**
 2. Install **`Automatic1111`** to the installation folder.
 3. Check generate images on **`Automatic1111`**
-4. Set command line arguments **`--api`** for **`Automatic1111`** 
+4. Set command line arguments **`--api`** for **`Automatic1111`** <br />
+     Edit **`webui-user.bat`**, **`set COMMANDLINE_ARGS=`** to **`set COMMANDLINE_ARGS=--api`**
 ###
 5. [Download](https://github.com/Invary/IvyPhotoshopDiffusion/releases) latest version of IvyPhotoshopDiffusion
 6. Extract it to installation folder
