@@ -55,7 +55,7 @@ latest version of [IvyPhotoshopDiffusion](https://github.com/Invary/IvyPhotoshop
 
 ##  Documents
 
-see [Documents](https://github.com/Invary/IvyPhotoshopDiffusion/doc/README.md) page.
+see [Documents](https://github.com/Invary/IvyPhotoshopDiffusion/tree/main/doc) page.
 
 <br />
 
