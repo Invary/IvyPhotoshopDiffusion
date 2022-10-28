@@ -6,7 +6,7 @@
 IvyPhotoshopDiffusion is a tool for generating AI image on Photoshop for Windows.
 The AI generating image process is done by [Stable Diffusion](https://github.com/CompVis/stable-diffusion) and [Automatic1111 Stable Diffusion web UI](https://github.com/AUTOMATIC1111/stable-diffusion-webui).
 
-<video src='https://github.com/Invary/IvyPhotoshopDiffusion/raw/main/res/intro.mp4' width='1024' />
+https://user-images.githubusercontent.com/99020933/198564805-4e96151b-df74-4a61-995b-9ffef95fa28c.mp4
 
 
 <br />
