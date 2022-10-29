@@ -96,6 +96,8 @@
 			this.buttonGenerate.Size = new System.Drawing.Size(112, 41);
 			this.buttonGenerate.TabIndex = 0;
 			this.buttonGenerate.Text = "Generate";
+			this.toolTip.SetToolTip(this.buttonGenerate, "Generate image\r\nText2Image, if [shift] key pressed. \r\nImage2Image, if no key pres" +
+        "sed");
 			this.buttonGenerate.UseVisualStyleBackColor = true;
 			this.buttonGenerate.Click += new System.EventHandler(this.buttonGenerate_Click);
 			// 

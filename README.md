@@ -73,6 +73,11 @@ see [Documents](https://github.com/Invary/IvyPhotoshopDiffusion/tree/main/doc) p
 
 ##  Changelog
 
+- Ver102 <br />
+Support text2image. Use generate button with pressing [shift] key <br />
+Change log output of generated images to InfoText only <br />
+
+
 - Ver101 <br />
 Bug fix log message out <br />
 Bug fix seed input <br />

@@ -21,6 +21,7 @@ namespace Invary.IvyPhotoshopDiffusion
 {
 	// Automatic1111 need command line option '--api', otherwise 404 error
 
+
 	//TODO: custom prompt selection, combobox
 	//TODO: save last setting
 	//TODO: dupe exec check?
@@ -271,30 +272,54 @@ namespace Invary.IvyPhotoshopDiffusion
 				{
 					try
 					{
-						var requestImg2Img = new JsonRequestImg2Img();
+						JsonRequestBase request;
+
+						// text2image, if [shift] key pressed
+						if (Control.ModifierKeys.HasFlag(Keys.Shift))
+						{
+							LogMessage.WriteLine("start Text2Image");
+							request = new JsonRequestTxt2Img();
+						}
+						else
+							request = new JsonRequestImg2Img();
 
 						int nBatchCount = 1;
 
 						Invoke((MethodInvoker)delegate
 						{
-							requestImg2Img.prompt = textBoxPrompt.Text;
-							requestImg2Img.negative_prompt = textBoxNegativePrompt.Text;
+							request.prompt = textBoxPrompt.Text;
+							request.negative_prompt = textBoxNegativePrompt.Text;
 
-							requestImg2Img.denoising_strength = (float)trackBarNoiseScale100.Value / 100;
-							requestImg2Img.mask_blur = trackBarMaskBlur.Value;
-							requestImg2Img.cfg_scale = (float)trackBarCfgScale100.Value / 100;
-							requestImg2Img.steps = trackBarStep.Value;
-							requestImg2Img.sampler_index = (string)comboBoxSampler.SelectedItem;
+							request.denoising_strength = (float)trackBarNoiseScale100.Value / 100;
+							request.cfg_scale = (float)trackBarCfgScale100.Value / 100;
+							request.steps = trackBarStep.Value;
+							request.sampler_index = (string)comboBoxSampler.SelectedItem;
 							if (numericUpDownSeed.Value >= 0)
-								requestImg2Img.seed = numericUpDownSeed.Value;
+								request.seed = numericUpDownSeed.Value;
 
-							requestImg2Img.batch_size = trackBarBatchSize.Value;
+							request.batch_size = trackBarBatchSize.Value;
 							nBatchCount = trackBarBatchCount.Value;
 
-							requestImg2Img.inpainting_mask_invert = (checkBoxInpainting_mask_invert.Checked) ? 1 : 0;
+							request.width = int.Parse((string)comboBoxWidth.SelectedItem);
+							request.height = int.Parse((string)comboBoxHeight.SelectedItem);
+
+
+							if (request.GetType() == typeof(JsonRequestImg2Img))
+							{
+								var reqImg2Img = request as JsonRequestImg2Img;
+								reqImg2Img.mask_blur = trackBarMaskBlur.Value;
+								reqImg2Img.inpainting_mask_invert = (checkBoxInpainting_mask_invert.Checked) ? 1 : 0;
+								reqImg2Img.init_images = new string[1];
+							}
+
+
+							if (request.GetType() == typeof(JsonRequestTxt2Img))
+							{
+								var reqTxt2Img = request as JsonRequestTxt2Img;
+								//TODO: enable_hr
+							}
 						});
 
-						requestImg2Img.init_images = new string[1];
 
 						if (_bAbort)
 							return;
@@ -326,54 +351,57 @@ namespace Invary.IvyPhotoshopDiffusion
 						}
 
 
-						Photoshop.Copy(appRef, true);
-
-						if (Clipboard.ContainsImage())
+						if (request.GetType() == typeof(JsonRequestImg2Img))
 						{
-							using (Image img = Clipboard.GetImage())
+							var reqImg2Img = request as JsonRequestImg2Img;
+
+							Photoshop.Copy(appRef, true);
+
+							if (Clipboard.ContainsImage())
 							{
-								//img.Save(@"g:\desktop\14214.png");
-
-								requestImg2Img.init_images[0] = Automatic1111.Image2String(img);
-								requestImg2Img.width = img.Width;
-								requestImg2Img.height = img.Height;
-
-								if (img.Width != width || img.Height != height)
+								using (Image img = Clipboard.GetImage())
 								{
-									LogMessage.WriteLine("error: generate failed");
-									LogMessage.WriteLine($"Maybe selection location in photoshop is invalid. Selection area is out of image.");
-									return;
+									//img.Save(@"g:\desktop\14214.png");
+
+									reqImg2Img.init_images[0] = Automatic1111.Image2String(img);
+
+									if (img.Width != width || img.Height != height)
+									{
+										LogMessage.WriteLine("error: generate failed");
+										LogMessage.WriteLine($"Maybe selection location in photoshop is invalid. Selection area is out of image.");
+										return;
+									}
+
+									Invoke((MethodInvoker)delegate
+									{
+										var mask = pictureBoxMask.Image;
+										if (mask != null && checkBoxAutoMask.Checked == false)
+										{
+											reqImg2Img.mask = Automatic1111.Image2String(mask);
+
+											if (mask.Width != width || mask.Height != height)
+											{
+												LogMessage.WriteLine("error: generate failed");
+												LogMessage.WriteLine($"Mask image size is invalid. Need to clear/set mask.");
+												return;
+											}
+										}
+										else if (checkBoxAutoMask.Checked)
+										{
+											using (var bmpMask = CreateMask(img))
+											{
+												reqImg2Img.mask = Automatic1111.Image2String(bmpMask);
+											}
+										}
+									});
 								}
-
-								Invoke((MethodInvoker)delegate
-								{
-									var mask = pictureBoxMask.Image;
-									if (mask != null && checkBoxAutoMask.Checked == false)
-									{
-										requestImg2Img.mask = Automatic1111.Image2String(mask);
-
-										if (mask.Width != width || mask.Height != height)
-										{
-											LogMessage.WriteLine("error: generate failed");
-											LogMessage.WriteLine($"Mask image size is invalid. Need to clear/set mask.");
-											return;
-										}
-									}
-									else if (checkBoxAutoMask.Checked)
-									{
-										using (var bmpMask = CreateMask(img))
-										{
-											requestImg2Img.mask = Automatic1111.Image2String(bmpMask);
-										}
-									}
-								});
 							}
-						}
-						else
-						{
-							LogMessage.WriteLine("error: generate failed");
-							LogMessage.WriteLine("Failed to obtain image from photoshop");
-							return;
+							else
+							{
+								LogMessage.WriteLine("error: generate failed");
+								LogMessage.WriteLine("Failed to obtain image from photoshop");
+								return;
+							}
 						}
 						if (_bAbort)
 							return;
@@ -385,13 +413,13 @@ namespace Invary.IvyPhotoshopDiffusion
 								return;
 
 							if (i > 0)
-								requestImg2Img.seed += requestImg2Img.batch_size;
+								request.seed += request.batch_size;
 							if (nBatchCount > 1)
 							{
 								LogMessage.WriteLine($"Start batch {i + 1} / {nBatchCount}");
 							}
 
-							var responseObj = Automatic1111.Send(requestImg2Img);
+							var responseObj = Automatic1111.Send(request);
 							foreach (var encodedimg in responseObj.images)
 							{
 								if (_bAbort)
@@ -409,7 +437,10 @@ namespace Invary.IvyPhotoshopDiffusion
 
 								Photoshop.SetSelection(appRef, curSelection);
 							}
-							LogMessage.WriteLine(responseObj.info.ToString().Replace(@"\r\n", "\r\n").Replace(@"\n", "\r\n"));
+							foreach (var item in responseObj.info.infotexts)
+							{
+								LogMessage.WriteLine(item);
+							}
 						}
 						if (_bAbort)
 							return;
