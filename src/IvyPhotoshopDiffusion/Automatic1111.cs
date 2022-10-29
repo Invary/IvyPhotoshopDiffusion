@@ -182,16 +182,64 @@ namespace Invary.IvyPhotoshopDiffusion
 
 
 
+	//public class JsonResponseImg2Img
+	//{
+	//	public string[] images { get; set; }
+	//	public ParametersResponseImg2Img parameters { get; set; }
+	//	public string info { get; set; }
+	//}
+
+	//public class ParametersResponseImg2Img
+	//{
+	//	public string[] init_images { get; set; }
+	//	public int resize_mode { get; set; }
+	//	public float denoising_strength { get; set; }
+	//	public object mask { get; set; }
+	//	public int mask_blur { get; set; }
+	//	public int inpainting_fill { get; set; }
+	//	public bool inpaint_full_res { get; set; }
+	//	public int inpaint_full_res_padding { get; set; }
+	//	public int inpainting_mask_invert { get; set; }
+	//	public string prompt { get; set; }
+	//	public object styles { get; set; }
+	//	public decimal seed { get; set; }
+	//	public decimal subseed { get; set; }
+	//	public int subseed_strength { get; set; }
+	//	public int seed_resize_from_h { get; set; }
+	//	public int seed_resize_from_w { get; set; }
+	//	public int batch_size { get; set; }
+	//	public int n_iter { get; set; }
+	//	public int steps { get; set; }
+	//	public float cfg_scale { get; set; }
+	//	public int width { get; set; }
+	//	public int height { get; set; }
+	//	public bool restore_faces { get; set; }
+	//	public bool tiling { get; set; }
+	//	public string negative_prompt { get; set; }
+	//	public object eta { get; set; }
+	//	public float s_churn { get; set; }
+	//	public object s_tmax { get; set; }
+	//	public float s_tmin { get; set; }
+	//	public float s_noise { get; set; }
+	//	public string sampler_index { get; set; }
+	//}
+
+
+
+
+
+
+
 	public class JsonResponseImg2Img
 	{
 		public string[] images { get; set; }
 		public ParametersResponseImg2Img parameters { get; set; }
-		public string info { get; set; }
+		public Info info { get; set; }
 	}
 
 	public class ParametersResponseImg2Img
 	{
-		public string[] init_images { get; set; }
+		public object init_images { get; set; }
 		public int resize_mode { get; set; }
 		public float denoising_strength { get; set; }
 		public object mask { get; set; }
@@ -221,14 +269,56 @@ namespace Invary.IvyPhotoshopDiffusion
 		public object s_tmax { get; set; }
 		public float s_tmin { get; set; }
 		public float s_noise { get; set; }
+		public object override_settings { get; set; }
 		public string sampler_index { get; set; }
+		public bool include_init_images { get; set; }
 	}
 
+	public class Info
+	{
+		public string prompt { get; set; }
+		public string[] all_prompts { get; set; }
+		public string negative_prompt { get; set; }
+		public decimal seed { get; set; }
+		public decimal[] all_seeds { get; set; }
+		public decimal subseed { get; set; }
+		public decimal[] all_subseeds { get; set; }
+		public int subseed_strength { get; set; }
+		public int width { get; set; }
+		public int height { get; set; }
+		public int sampler_index { get; set; }
+		public string sampler { get; set; }
+		public float cfg_scale { get; set; }
+		public int steps { get; set; }
+		public int batch_size { get; set; }
+		public bool restore_faces { get; set; }
+		public object face_restoration_model { get; set; }
+		public string sd_model_hash { get; set; }
+		public int seed_resize_from_w { get; set; }
+		public int seed_resize_from_h { get; set; }
+		public float denoising_strength { get; set; }
+		public Extra_Generation_Params extra_generation_params { get; set; }
+		public int index_of_first_image { get; set; }
+		public string[] infotexts { get; set; }
+		public object[] styles { get; set; }
+		public string job_timestamp { get; set; }
+		public int clip_skip { get; set; }
 
 
+		public override string ToString()
+		{
+			return JsonSerializer.Serialize(this);
+		}
+	}
 
+	public class Extra_Generation_Params
+	{
 
-
+		public override string ToString()
+		{
+			return JsonSerializer.Serialize(this);
+		}
+	}
 
 
 

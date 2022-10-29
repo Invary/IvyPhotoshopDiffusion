@@ -73,6 +73,12 @@ see [Documents](https://github.com/Invary/IvyPhotoshopDiffusion/tree/main/doc) p
 
 ##  Changelog
 
+- Ver101
+Bug fix log message out <br />
+Bug fix seed input <br />
+Bug fix json deserialize <br />
+
+
 - Ver100
 Initial release
 
