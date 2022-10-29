@@ -21,6 +21,8 @@ Duplicate layer and use mask. <br />
 
 <img src="https://raw.githubusercontent.com/Invary/IvyPhotoshopDiffusion/main/doc/res/doc02_ng_white_edge.png" width="300" /> <img src="https://raw.githubusercontent.com/Invary/IvyPhotoshopDiffusion/main/doc/res/doc02_ok_smooth_edge.png" width="300" />
 
+https://user-images.githubusercontent.com/99020933/198756584-6bf525c2-dd4f-4ad1-af40-9f303d456f95.mp4
+
 
 
 <br />
