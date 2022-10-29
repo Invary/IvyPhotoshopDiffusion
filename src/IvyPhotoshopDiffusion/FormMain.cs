@@ -409,7 +409,7 @@ namespace Invary.IvyPhotoshopDiffusion
 
 								Photoshop.SetSelection(appRef, curSelection);
 							}
-							LogMessage.WriteLine(responseObj.info.ToString().Replace(@"\r\n", "\r\n"));
+							LogMessage.WriteLine(responseObj.info.ToString().Replace(@"\r\n", "\r\n").Replace(@"\n", "\r\n"));
 						}
 						if (_bAbort)
 							return;
