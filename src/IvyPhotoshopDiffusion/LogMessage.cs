@@ -47,8 +47,7 @@ namespace Invary.IvyPhotoshopDiffusion
 
 				try
 				{
-					if (FormMain.MainWnd.Handle == null)
-						FormMain.MainWnd.textBoxLogMessage.Text = message;
+					FormMain.MainWnd.textBoxLogMessage.Text = message;
 				}
 				catch (Exception)
 				{

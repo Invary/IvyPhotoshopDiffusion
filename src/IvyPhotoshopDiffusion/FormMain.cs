@@ -286,7 +286,7 @@ namespace Invary.IvyPhotoshopDiffusion
 							requestImg2Img.steps = trackBarStep.Value;
 							requestImg2Img.sampler_index = (string)comboBoxSampler.SelectedItem;
 							if (numericUpDownSeed.Value >= 0)
-								requestImg2Img.seed = (int)numericUpDownSeed.Value;
+								requestImg2Img.seed = numericUpDownSeed.Value;
 
 							requestImg2Img.batch_size = trackBarBatchSize.Value;
 							nBatchCount = trackBarBatchCount.Value;

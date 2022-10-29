@@ -49,44 +49,44 @@
 			this.comboBoxRecentNegativePrompt = new System.Windows.Forms.ComboBox();
 			this.textBoxLogMessage = new System.Windows.Forms.TextBox();
 			this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-			this.groupBox1 = new System.Windows.Forms.GroupBox();
 			this.comboBoxHeight = new System.Windows.Forms.ComboBox();
 			this.comboBoxWidth = new System.Windows.Forms.ComboBox();
 			this.buttonSetTransparentColor = new System.Windows.Forms.Button();
+			this.trackBarCfgScale100 = new System.Windows.Forms.TrackBar();
+			this.trackBarStep = new System.Windows.Forms.TrackBar();
+			this.comboBoxSampler = new System.Windows.Forms.ComboBox();
+			this.numericUpDownSeed = new System.Windows.Forms.NumericUpDown();
+			this.trackBarBatchSize = new System.Windows.Forms.TrackBar();
+			this.trackBarBatchCount = new System.Windows.Forms.TrackBar();
+			this.pictureBoxNewVersionExists = new System.Windows.Forms.PictureBox();
+			this.textBoxLogWrite = new System.Windows.Forms.TextBox();
+			this.groupBox1 = new System.Windows.Forms.GroupBox();
 			this.label1 = new System.Windows.Forms.Label();
 			this.labelCfgScale100 = new System.Windows.Forms.Label();
-			this.trackBarCfgScale100 = new System.Windows.Forms.TrackBar();
 			this.label2 = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
 			this.label4 = new System.Windows.Forms.Label();
 			this.label5 = new System.Windows.Forms.Label();
 			this.labelStep = new System.Windows.Forms.Label();
-			this.trackBarStep = new System.Windows.Forms.TrackBar();
-			this.comboBoxSampler = new System.Windows.Forms.ComboBox();
-			this.numericUpDownSeed = new System.Windows.Forms.NumericUpDown();
 			this.label6 = new System.Windows.Forms.Label();
 			this.buttonSetting = new System.Windows.Forms.Button();
 			this.label7 = new System.Windows.Forms.Label();
-			this.trackBarBatchSize = new System.Windows.Forms.TrackBar();
 			this.label8 = new System.Windows.Forms.Label();
-			this.trackBarBatchCount = new System.Windows.Forms.TrackBar();
 			this.labelBatchSize = new System.Windows.Forms.Label();
 			this.labelBatchCount = new System.Windows.Forms.Label();
-			this.pictureBoxNewVersionExists = new System.Windows.Forms.PictureBox();
 			this.buttonAbort = new System.Windows.Forms.Button();
 			this.buttonAbortForced = new System.Windows.Forms.Button();
-			this.textBoxLogWrite = new System.Windows.Forms.TextBox();
 			this.buttonLogWrite = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.trackBarNoiseScale100)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.trackBarMaskBlur)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBoxMask)).BeginInit();
-			this.groupBox1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.trackBarCfgScale100)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.trackBarStep)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDownSeed)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.trackBarBatchSize)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.trackBarBatchCount)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBoxNewVersionExists)).BeginInit();
+			this.groupBox1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// buttonGenerate
@@ -290,20 +290,6 @@
 			this.textBoxLogMessage.TabStop = false;
 			this.toolTip.SetToolTip(this.textBoxLogMessage, "Log message");
 			// 
-			// groupBox1
-			// 
-			this.groupBox1.Controls.Add(this.comboBoxHeight);
-			this.groupBox1.Controls.Add(this.comboBoxWidth);
-			this.groupBox1.Controls.Add(this.buttonSelectionFit);
-			this.groupBox1.Controls.Add(this.buttonSelectionMemory);
-			this.groupBox1.Controls.Add(this.buttonSelectionRestore);
-			this.groupBox1.Location = new System.Drawing.Point(643, 22);
-			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new System.Drawing.Size(127, 244);
-			this.groupBox1.TabIndex = 21;
-			this.groupBox1.TabStop = false;
-			this.groupBox1.Text = "Selection";
-			// 
 			// comboBoxHeight
 			// 
 			this.comboBoxHeight.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -336,6 +322,128 @@
 			this.buttonSetTransparentColor.UseVisualStyleBackColor = true;
 			this.buttonSetTransparentColor.Click += new System.EventHandler(this.buttonSetTransparentColor_Click);
 			// 
+			// trackBarCfgScale100
+			// 
+			this.trackBarCfgScale100.AutoSize = false;
+			this.trackBarCfgScale100.LargeChange = 50;
+			this.trackBarCfgScale100.Location = new System.Drawing.Point(65, 298);
+			this.trackBarCfgScale100.Maximum = 1500;
+			this.trackBarCfgScale100.Name = "trackBarCfgScale100";
+			this.trackBarCfgScale100.Size = new System.Drawing.Size(408, 21);
+			this.trackBarCfgScale100.TabIndex = 24;
+			this.trackBarCfgScale100.TickStyle = System.Windows.Forms.TickStyle.None;
+			this.toolTip.SetToolTip(this.trackBarCfgScale100, "CFG scale. default value is 7.0");
+			this.trackBarCfgScale100.Value = 700;
+			// 
+			// trackBarStep
+			// 
+			this.trackBarStep.AutoSize = false;
+			this.trackBarStep.LargeChange = 1;
+			this.trackBarStep.Location = new System.Drawing.Point(180, 336);
+			this.trackBarStep.Maximum = 200;
+			this.trackBarStep.Name = "trackBarStep";
+			this.trackBarStep.Size = new System.Drawing.Size(293, 21);
+			this.trackBarStep.TabIndex = 29;
+			this.trackBarStep.TickStyle = System.Windows.Forms.TickStyle.None;
+			this.toolTip.SetToolTip(this.trackBarStep, "Sampling steps. default value is 20");
+			this.trackBarStep.Value = 20;
+			// 
+			// comboBoxSampler
+			// 
+			this.comboBoxSampler.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.comboBoxSampler.FormattingEnabled = true;
+			this.comboBoxSampler.Location = new System.Drawing.Point(25, 333);
+			this.comboBoxSampler.Name = "comboBoxSampler";
+			this.comboBoxSampler.Size = new System.Drawing.Size(102, 20);
+			this.comboBoxSampler.TabIndex = 32;
+			this.toolTip.SetToolTip(this.comboBoxSampler, "Sampling method");
+			// 
+			// numericUpDownSeed
+			// 
+			this.numericUpDownSeed.Location = new System.Drawing.Point(470, 407);
+			this.numericUpDownSeed.Maximum = new decimal(new int[] {
+            -727379968,
+            232,
+            0,
+            0});
+			this.numericUpDownSeed.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            -2147483648});
+			this.numericUpDownSeed.Name = "numericUpDownSeed";
+			this.numericUpDownSeed.Size = new System.Drawing.Size(120, 19);
+			this.numericUpDownSeed.TabIndex = 33;
+			this.toolTip.SetToolTip(this.numericUpDownSeed, "Seed. -1 mean \'random seed\'. default value is -1");
+			this.numericUpDownSeed.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            -2147483648});
+			// 
+			// trackBarBatchSize
+			// 
+			this.trackBarBatchSize.AutoSize = false;
+			this.trackBarBatchSize.LargeChange = 1;
+			this.trackBarBatchSize.Location = new System.Drawing.Point(245, 407);
+			this.trackBarBatchSize.Maximum = 48;
+			this.trackBarBatchSize.Minimum = 1;
+			this.trackBarBatchSize.Name = "trackBarBatchSize";
+			this.trackBarBatchSize.Size = new System.Drawing.Size(112, 21);
+			this.trackBarBatchSize.TabIndex = 36;
+			this.trackBarBatchSize.TickStyle = System.Windows.Forms.TickStyle.None;
+			this.toolTip.SetToolTip(this.trackBarBatchSize, "Batch size. default value is 1. The larger the value, the more VRAM is required.");
+			this.trackBarBatchSize.Value = 1;
+			// 
+			// trackBarBatchCount
+			// 
+			this.trackBarBatchCount.AutoSize = false;
+			this.trackBarBatchCount.LargeChange = 1;
+			this.trackBarBatchCount.Location = new System.Drawing.Point(245, 380);
+			this.trackBarBatchCount.Maximum = 200;
+			this.trackBarBatchCount.Minimum = 1;
+			this.trackBarBatchCount.Name = "trackBarBatchCount";
+			this.trackBarBatchCount.Size = new System.Drawing.Size(112, 21);
+			this.trackBarBatchCount.TabIndex = 39;
+			this.trackBarBatchCount.TickStyle = System.Windows.Forms.TickStyle.None;
+			this.toolTip.SetToolTip(this.trackBarBatchCount, "Batch count. default value is 1");
+			this.trackBarBatchCount.Value = 1;
+			// 
+			// pictureBoxNewVersionExists
+			// 
+			this.pictureBoxNewVersionExists.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.pictureBoxNewVersionExists.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxNewVersionExists.Image")));
+			this.pictureBoxNewVersionExists.Location = new System.Drawing.Point(664, 463);
+			this.pictureBoxNewVersionExists.Name = "pictureBoxNewVersionExists";
+			this.pictureBoxNewVersionExists.Size = new System.Drawing.Size(52, 50);
+			this.pictureBoxNewVersionExists.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+			this.pictureBoxNewVersionExists.TabIndex = 43;
+			this.pictureBoxNewVersionExists.TabStop = false;
+			this.toolTip.SetToolTip(this.pictureBoxNewVersionExists, "New version exists");
+			this.pictureBoxNewVersionExists.Visible = false;
+			// 
+			// textBoxLogWrite
+			// 
+			this.textBoxLogWrite.Location = new System.Drawing.Point(318, 788);
+			this.textBoxLogWrite.Name = "textBoxLogWrite";
+			this.textBoxLogWrite.Size = new System.Drawing.Size(326, 19);
+			this.textBoxLogWrite.TabIndex = 46;
+			this.toolTip.SetToolTip(this.textBoxLogWrite, "Text message write to log file.\r\nthis is only for note.");
+			// 
+			// groupBox1
+			// 
+			this.groupBox1.Controls.Add(this.comboBoxHeight);
+			this.groupBox1.Controls.Add(this.comboBoxWidth);
+			this.groupBox1.Controls.Add(this.buttonSelectionFit);
+			this.groupBox1.Controls.Add(this.buttonSelectionMemory);
+			this.groupBox1.Controls.Add(this.buttonSelectionRestore);
+			this.groupBox1.Location = new System.Drawing.Point(643, 22);
+			this.groupBox1.Name = "groupBox1";
+			this.groupBox1.Size = new System.Drawing.Size(127, 244);
+			this.groupBox1.TabIndex = 21;
+			this.groupBox1.TabStop = false;
+			this.groupBox1.Text = "Selection";
+			// 
 			// label1
 			// 
 			this.label1.AutoSize = true;
@@ -353,19 +461,6 @@
 			this.labelCfgScale100.Size = new System.Drawing.Size(35, 12);
 			this.labelCfgScale100.TabIndex = 25;
 			this.labelCfgScale100.Text = "label3";
-			// 
-			// trackBarCfgScale100
-			// 
-			this.trackBarCfgScale100.AutoSize = false;
-			this.trackBarCfgScale100.LargeChange = 50;
-			this.trackBarCfgScale100.Location = new System.Drawing.Point(65, 298);
-			this.trackBarCfgScale100.Maximum = 1500;
-			this.trackBarCfgScale100.Name = "trackBarCfgScale100";
-			this.trackBarCfgScale100.Size = new System.Drawing.Size(408, 21);
-			this.trackBarCfgScale100.TabIndex = 24;
-			this.trackBarCfgScale100.TickStyle = System.Windows.Forms.TickStyle.None;
-			this.toolTip.SetToolTip(this.trackBarCfgScale100, "CFG scale. default value is 7.0");
-			this.trackBarCfgScale100.Value = 700;
 			// 
 			// label2
 			// 
@@ -412,52 +507,6 @@
 			this.labelStep.TabIndex = 30;
 			this.labelStep.Text = "label3";
 			// 
-			// trackBarStep
-			// 
-			this.trackBarStep.AutoSize = false;
-			this.trackBarStep.LargeChange = 1;
-			this.trackBarStep.Location = new System.Drawing.Point(180, 336);
-			this.trackBarStep.Maximum = 200;
-			this.trackBarStep.Name = "trackBarStep";
-			this.trackBarStep.Size = new System.Drawing.Size(293, 21);
-			this.trackBarStep.TabIndex = 29;
-			this.trackBarStep.TickStyle = System.Windows.Forms.TickStyle.None;
-			this.toolTip.SetToolTip(this.trackBarStep, "Sampling steps. default value is 20");
-			this.trackBarStep.Value = 20;
-			// 
-			// comboBoxSampler
-			// 
-			this.comboBoxSampler.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.comboBoxSampler.FormattingEnabled = true;
-			this.comboBoxSampler.Location = new System.Drawing.Point(25, 333);
-			this.comboBoxSampler.Name = "comboBoxSampler";
-			this.comboBoxSampler.Size = new System.Drawing.Size(102, 20);
-			this.comboBoxSampler.TabIndex = 32;
-			this.toolTip.SetToolTip(this.comboBoxSampler, "Sampling method");
-			// 
-			// numericUpDownSeed
-			// 
-			this.numericUpDownSeed.Location = new System.Drawing.Point(470, 407);
-			this.numericUpDownSeed.Maximum = new decimal(new int[] {
-            1000000000,
-            0,
-            0,
-            0});
-			this.numericUpDownSeed.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            -2147483648});
-			this.numericUpDownSeed.Name = "numericUpDownSeed";
-			this.numericUpDownSeed.Size = new System.Drawing.Size(120, 19);
-			this.numericUpDownSeed.TabIndex = 33;
-			this.toolTip.SetToolTip(this.numericUpDownSeed, "Seed. -1 mean \'random seed\'. default value is -1");
-			this.numericUpDownSeed.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            -2147483648});
-			// 
 			// label6
 			// 
 			this.label6.AutoSize = true;
@@ -488,20 +537,6 @@
 			this.label7.TabIndex = 38;
 			this.label7.Text = "Batch size";
 			// 
-			// trackBarBatchSize
-			// 
-			this.trackBarBatchSize.AutoSize = false;
-			this.trackBarBatchSize.LargeChange = 1;
-			this.trackBarBatchSize.Location = new System.Drawing.Point(245, 407);
-			this.trackBarBatchSize.Maximum = 48;
-			this.trackBarBatchSize.Minimum = 1;
-			this.trackBarBatchSize.Name = "trackBarBatchSize";
-			this.trackBarBatchSize.Size = new System.Drawing.Size(112, 21);
-			this.trackBarBatchSize.TabIndex = 36;
-			this.trackBarBatchSize.TickStyle = System.Windows.Forms.TickStyle.None;
-			this.toolTip.SetToolTip(this.trackBarBatchSize, "Batch size. default value is 1. The larger the value, the more VRAM is required.");
-			this.trackBarBatchSize.Value = 1;
-			// 
 			// label8
 			// 
 			this.label8.AutoSize = true;
@@ -510,20 +545,6 @@
 			this.label8.Size = new System.Drawing.Size(67, 12);
 			this.label8.TabIndex = 40;
 			this.label8.Text = "Batch count";
-			// 
-			// trackBarBatchCount
-			// 
-			this.trackBarBatchCount.AutoSize = false;
-			this.trackBarBatchCount.LargeChange = 1;
-			this.trackBarBatchCount.Location = new System.Drawing.Point(245, 380);
-			this.trackBarBatchCount.Maximum = 200;
-			this.trackBarBatchCount.Minimum = 1;
-			this.trackBarBatchCount.Name = "trackBarBatchCount";
-			this.trackBarBatchCount.Size = new System.Drawing.Size(112, 21);
-			this.trackBarBatchCount.TabIndex = 39;
-			this.trackBarBatchCount.TickStyle = System.Windows.Forms.TickStyle.None;
-			this.toolTip.SetToolTip(this.trackBarBatchCount, "Batch count. default value is 1");
-			this.trackBarBatchCount.Value = 1;
 			// 
 			// labelBatchSize
 			// 
@@ -542,19 +563,6 @@
 			this.labelBatchCount.Size = new System.Drawing.Size(35, 12);
 			this.labelBatchCount.TabIndex = 42;
 			this.labelBatchCount.Text = "label3";
-			// 
-			// pictureBoxNewVersionExists
-			// 
-			this.pictureBoxNewVersionExists.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.pictureBoxNewVersionExists.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxNewVersionExists.Image")));
-			this.pictureBoxNewVersionExists.Location = new System.Drawing.Point(664, 463);
-			this.pictureBoxNewVersionExists.Name = "pictureBoxNewVersionExists";
-			this.pictureBoxNewVersionExists.Size = new System.Drawing.Size(52, 50);
-			this.pictureBoxNewVersionExists.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-			this.pictureBoxNewVersionExists.TabIndex = 43;
-			this.pictureBoxNewVersionExists.TabStop = false;
-			this.toolTip.SetToolTip(this.pictureBoxNewVersionExists, "New version exists");
-			this.pictureBoxNewVersionExists.Visible = false;
 			// 
 			// buttonAbort
 			// 
@@ -575,14 +583,6 @@
 			this.buttonAbortForced.Text = "Forced";
 			this.buttonAbortForced.UseVisualStyleBackColor = true;
 			this.buttonAbortForced.Click += new System.EventHandler(this.buttonAbortForced_Click);
-			// 
-			// textBoxLogWrite
-			// 
-			this.textBoxLogWrite.Location = new System.Drawing.Point(318, 788);
-			this.textBoxLogWrite.Name = "textBoxLogWrite";
-			this.textBoxLogWrite.Size = new System.Drawing.Size(326, 19);
-			this.textBoxLogWrite.TabIndex = 46;
-			this.toolTip.SetToolTip(this.textBoxLogWrite, "Text message write to log file.\r\nthis is only for note.");
 			// 
 			// buttonLogWrite
 			// 
@@ -645,13 +645,13 @@
 			((System.ComponentModel.ISupportInitialize)(this.trackBarNoiseScale100)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.trackBarMaskBlur)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBoxMask)).EndInit();
-			this.groupBox1.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.trackBarCfgScale100)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.trackBarStep)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDownSeed)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.trackBarBatchSize)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.trackBarBatchCount)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBoxNewVersionExists)).EndInit();
+			this.groupBox1.ResumeLayout(false);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 

@@ -106,9 +106,9 @@ namespace Invary.IvyPhotoshopDiffusion
 		public string prompt { get; set; } = "";
 		public string negative_prompt { get; set; } = "";
 		//public string[] styles { get; set; }
-		public int seed { get; set; } = -1;
+		public decimal seed { get; set; } = -1;
 		//public float subseed_strength { get; set; } = 0.0f;
-		//public int subseed { get; set; } = -1;
+		//public decimal subseed { get; set; } = -1;
 		//public int seed_resize_from_h { get; set; }
 		//public int seed_resize_from_w { get; set; }
 		public string sampler_index { get; set; } = "Euler";
@@ -156,8 +156,8 @@ namespace Invary.IvyPhotoshopDiffusion
 		public int firstphase_height { get; set; }
 		public string prompt { get; set; }
 		public object styles { get; set; }
-		public int seed { get; set; }
-		public int subseed { get; set; }
+		public decimal seed { get; set; }
+		public decimal subseed { get; set; }
 		public int subseed_strength { get; set; }
 		public int seed_resize_from_h { get; set; }
 		public int seed_resize_from_w { get; set; }
@@ -202,8 +202,8 @@ namespace Invary.IvyPhotoshopDiffusion
 		public int inpainting_mask_invert { get; set; }
 		public string prompt { get; set; }
 		public object styles { get; set; }
-		public int seed { get; set; }
-		public int subseed { get; set; }
+		public decimal seed { get; set; }
+		public decimal subseed { get; set; }
 		public int subseed_strength { get; set; }
 		public int seed_resize_from_h { get; set; }
 		public int seed_resize_from_w { get; set; }

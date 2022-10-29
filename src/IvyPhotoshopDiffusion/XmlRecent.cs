@@ -85,7 +85,7 @@ namespace Invary.IvyPhotoshopDiffusion
 
 
 			// add to list, if not exists
-			find = ListPrompt.FindIndex(a => a.Raw.Replace("\r", "") == prompt);
+			find = ListPrompt.FindIndex(a => a.Raw.Replace("\r", "").Replace("\n", "") == prompt.Replace("\r", "").Replace("\n", ""));
 			if (find == 0)
 			{
 				//find at head. do nothing
@@ -109,7 +109,7 @@ namespace Invary.IvyPhotoshopDiffusion
 
 
 			// add to list, if not exists
-			find = ListNegativePrompt.FindIndex(a => a.Raw.Replace("\r", "") == negativePrompt);
+			find = ListNegativePrompt.FindIndex(a => a.Raw.Replace("\r", "").Replace("\n", "") == negativePrompt.Replace("\r", "").Replace("\n", ""));
 			if (find == 0)
 			{
 				//find at head. do nothing
