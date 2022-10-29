@@ -12,8 +12,14 @@ You shoud set solid color as background color. Default is white. <br />
 
 https://user-images.githubusercontent.com/99020933/198703995-d0f425d7-366e-4ab6-9a25-175b6c548910.mp4
 
+<br />
 
 
+## White borders occur
+
+Duplicate layer and use mask. <br />
+
+<img src="https://raw.githubusercontent.com/Invary/IvyPhotoshopDiffusion/main/doc/res/doc02_ng_white_edge.png" width="300" /> <img src="https://raw.githubusercontent.com/Invary/IvyPhotoshopDiffusion/main/doc/res/doc02_ok_smooth_edge.png" width="300" />
 
 
 
