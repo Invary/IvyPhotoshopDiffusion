@@ -23,6 +23,18 @@ Duplicate layer and use mask. <br />
 
 https://user-images.githubusercontent.com/99020933/198756584-6bf525c2-dd4f-4ad1-af40-9f303d456f95.mp4
 
+<br />
+
+
+## Manage selection size
+
+The size of the generate image must be a multiple of 64, such as 512x512, 768x512. <br />
+Use [Fit] and [Memory]/[Restore] to facilitate selection operations in Photoshop. <br />
+
+https://user-images.githubusercontent.com/99020933/198859185-c3c5b04e-f9c5-4b19-800f-24206d80f3e5.mp4
+
+
+
 
 
 <br />
