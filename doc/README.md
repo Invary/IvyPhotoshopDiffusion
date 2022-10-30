@@ -33,6 +33,15 @@ Use [Fit] and [Memory]/[Restore] to facilitate selection operations in Photoshop
 
 https://user-images.githubusercontent.com/99020933/198859185-c3c5b04e-f9c5-4b19-800f-24206d80f3e5.mp4
 
+<br />
+
+
+## Text2Image
+
+If you want to generate images with txt2img mode, hold down the [Shift] key and click the generate button. <br />
+
+<img src="https://raw.githubusercontent.com/Invary/IvyPhotoshopDiffusion/main/doc/res/doc04_txt2img.png" width="300" />
+
 
 
 
