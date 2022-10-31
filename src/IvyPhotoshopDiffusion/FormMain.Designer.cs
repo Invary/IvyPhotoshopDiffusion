@@ -77,6 +77,8 @@
 			this.buttonAbort = new System.Windows.Forms.Button();
 			this.buttonAbortForced = new System.Windows.Forms.Button();
 			this.buttonLogWrite = new System.Windows.Forms.Button();
+			this.textBoxLayerName = new System.Windows.Forms.TextBox();
+			this.label9 = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.trackBarNoiseScale100)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.trackBarMaskBlur)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBoxMask)).BeginInit();
@@ -596,11 +598,31 @@
 			this.buttonLogWrite.UseVisualStyleBackColor = true;
 			this.buttonLogWrite.Click += new System.EventHandler(this.buttonLogWrite_Click);
 			// 
+			// textBoxLayerName
+			// 
+			this.textBoxLayerName.Location = new System.Drawing.Point(318, 535);
+			this.textBoxLayerName.Name = "textBoxLayerName";
+			this.textBoxLayerName.Size = new System.Drawing.Size(403, 19);
+			this.textBoxLayerName.TabIndex = 48;
+			this.toolTip.SetToolTip(this.textBoxLayerName, resources.GetString("textBoxLayerName.ToolTip"));
+			// 
+			// label9
+			// 
+			this.label9.AutoSize = true;
+			this.label9.Location = new System.Drawing.Point(318, 517);
+			this.label9.Name = "label9";
+			this.label9.Size = new System.Drawing.Size(64, 12);
+			this.label9.TabIndex = 49;
+			this.label9.Text = "Layer name";
+			this.toolTip.SetToolTip(this.label9, resources.GetString("label9.ToolTip"));
+			// 
 			// FormMain
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(794, 871);
+			this.Controls.Add(this.label9);
+			this.Controls.Add(this.textBoxLayerName);
 			this.Controls.Add(this.buttonLogWrite);
 			this.Controls.Add(this.textBoxLogWrite);
 			this.Controls.Add(this.buttonAbortForced);
@@ -708,6 +730,8 @@
 		private System.Windows.Forms.Button buttonAbortForced;
 		private System.Windows.Forms.TextBox textBoxLogWrite;
 		private System.Windows.Forms.Button buttonLogWrite;
+		private System.Windows.Forms.TextBox textBoxLayerName;
+		private System.Windows.Forms.Label label9;
 	}
 }
 

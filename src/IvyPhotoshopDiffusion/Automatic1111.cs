@@ -119,6 +119,9 @@ namespace Invary.IvyPhotoshopDiffusion
 
 		public static string Image2String(Image image)
 		{
+			if (image == null)
+				throw new Exception("unknown error image processing. Try again.");
+
 			using (MemoryStream ms = new MemoryStream())
 			{
 				image.Save(ms, System.Drawing.Imaging.ImageFormat.Png);

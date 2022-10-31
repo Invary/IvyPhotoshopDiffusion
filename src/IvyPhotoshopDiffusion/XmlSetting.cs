@@ -20,7 +20,7 @@ namespace Invary.IvyPhotoshopDiffusion
 
 
 		[XmlIgnore]
-		public static int nVersion { get; } = 102;
+		public static int nVersion { get; } = 103;
 
 		[XmlIgnore]
 		public static string strVersion { get; } = $"Ver{nVersion}";
@@ -57,6 +57,7 @@ namespace Invary.IvyPhotoshopDiffusion
 		public string LastPrompt { set; get; } = "";
 		public string LastNegativePrompt { set; get; } = "lowres, bad anatomy, bad hands, text, error, missing fingers, extra digit, fewer digits, cropped, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry, \n";
 
+		public string LastLayerName { set; get; } = "@date, seed=@seed, strength=@strength, cfg=@cfg, steps=@steps, @sampler, @prompt";
 
 
 

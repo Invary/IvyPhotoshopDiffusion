@@ -56,6 +56,7 @@ namespace Invary.IvyPhotoshopDiffusion
 
 			textBoxPrompt.Text = XmlSetting.Current.LastPrompt;
 			textBoxNegativePrompt.Text = XmlSetting.Current.LastNegativePrompt;
+			textBoxLayerName.Text = XmlSetting.Current.LastLayerName;
 
 
 			labelNoiseScale100.Text = $"{(double)trackBarNoiseScale100.Value / 100:0.##}";
@@ -93,6 +94,7 @@ namespace Invary.IvyPhotoshopDiffusion
 			{
 				labelBatchSize.Text = $"{trackBarBatchSize.Value}";
 			};
+
 
 
 
@@ -219,6 +221,10 @@ namespace Invary.IvyPhotoshopDiffusion
 
 			FormClosing += delegate
 			{
+				XmlSetting.Current.LastPrompt = textBoxPrompt.Text;
+				XmlSetting.Current.LastNegativePrompt = textBoxNegativePrompt.Text;
+				XmlSetting.Current.LastLayerName = textBoxLayerName.Text;
+
 				XmlSetting.Current.Save();
 				TaskManager.AbortAll();
 			};
@@ -284,6 +290,7 @@ namespace Invary.IvyPhotoshopDiffusion
 							request = new JsonRequestImg2Img();
 
 						int nBatchCount = 1;
+						string strLayerNameTemplate = "";
 
 						Invoke((MethodInvoker)delegate
 						{
@@ -299,6 +306,8 @@ namespace Invary.IvyPhotoshopDiffusion
 
 							request.batch_size = trackBarBatchSize.Value;
 							nBatchCount = trackBarBatchCount.Value;
+
+							strLayerNameTemplate = textBoxLayerName.Text;
 
 							request.width = int.Parse((string)comboBoxWidth.SelectedItem);
 							request.height = int.Parse((string)comboBoxHeight.SelectedItem);
@@ -435,6 +444,26 @@ namespace Invary.IvyPhotoshopDiffusion
 								appRef.ActiveDocument.Close();
 								appRef.ActiveDocument.Paste();
 
+								//set layer name
+								if (string.IsNullOrEmpty(strLayerNameTemplate) == false)
+								{
+									var name = strLayerNameTemplate;
+									//"@seed, @prompt, @negative, @cfg, @steps, @clip, @strength, @sampler, @subseed, @subseedstrength";
+									name = name.Replace(@"@date", $"{DateTime.Now.ToString("yyyyMMdd_HHmmss")}");
+									name = name.Replace(@"@seed", $"{responseObj.info.seed}");
+									name = name.Replace(@"@prompt", $"{responseObj.info.prompt}");
+									name = name.Replace(@"@negative", $"{responseObj.info.negative_prompt}");
+									name = name.Replace(@"@cfg", $"{responseObj.info.cfg_scale}");
+									name = name.Replace(@"@steps", $"{responseObj.info.steps}");
+									name = name.Replace(@"@clip", $"{responseObj.info.clip_skip}");
+									name = name.Replace(@"@strength", $"{responseObj.info.denoising_strength}");
+									name = name.Replace(@"@sampler", $"{responseObj.info.sampler}");
+									name = name.Replace(@"@subseedstrength", $"{responseObj.info.subseed_strength}");
+									name = name.Replace(@"@subseed", $"{responseObj.info.subseed}");
+									appRef.ActiveDocument.ActiveLayer.name = name;
+									LogMessage.WriteLine($"layer: {name}");
+								}
+
 								Photoshop.SetSelection(appRef, curSelection);
 							}
 							foreach (var item in responseObj.info.infotexts)
@@ -450,8 +479,11 @@ namespace Invary.IvyPhotoshopDiffusion
 					}
 					catch (Exception ex)
 					{
-						LogMessage.WriteLine(ex.Message);
-						LogMessage.WriteLine("error: generate failed");
+						//this exception message is ignore, why this error???
+						// "General Photoshop error occurred. This functionality may not be available in this version of Photoshop."
+						if (ex.Message.IndexOf("This functionality may not") < 0)
+							LogMessage.WriteLine(ex.Message);
+						LogMessage.WriteLine("error: generate failed. try again");
 						return;
 					}
 					finally
@@ -473,8 +505,11 @@ namespace Invary.IvyPhotoshopDiffusion
 			}
 			catch (Exception ex)
 			{
-				LogMessage.WriteLine(ex.Message);
-				LogMessage.WriteLine("error: generate failed");
+				//this exception message is ignore, why this error???
+				// "General Photoshop error occurred. This functionality may not be available in this version of Photoshop."
+				if (ex.Message.IndexOf("This functionality may not") < 0)
+					LogMessage.WriteLine(ex.Message);
+				LogMessage.WriteLine("error: generate failed. try again");
 				return;
 			}
 		}

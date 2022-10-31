@@ -73,6 +73,12 @@ see [Documents](https://github.com/Invary/IvyPhotoshopDiffusion/tree/main/doc) p
 
 ##  Changelog
 
+- Ver103 <br />
+Save last prompt/negative/layername setting for default value <br />
+Add setting layer name function <br />
+Bug fix image processing exception <br />
+
+
 - Ver102 <br />
 Support text2image. Use generate button with pressing [shift] key <br />
 Change log output of generated images to InfoText only <br />

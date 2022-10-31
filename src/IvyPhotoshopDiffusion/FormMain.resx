@@ -127,7 +127,7 @@
   <data name="pictureBoxNewVersionExists.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAH0AAAB9CAYAAACPgGwlAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAABM
-        4gAATOIBJ4pW6gAABylJREFUeF7tnb3O5DQUhrfmCpC4AloKtCVXQIEouQIkCmpqCgpa+pUQFV+LhKZA
+        4QAATOEBijN3hwAABylJREFUeF7tnb3O5DQUhrfmCpC4AloKtCVXQIEouQIkCmpqCgpa+pUQFV+LhKZA
         SGgrkKChB8TH7wotFd2QN5pZRdGTOXbsGR+fz0d6mjf2sZN3nHE8SebR8XgcPDBQHMQGxUFsUBzEBsVB
         bFAcxAbFQWxQHMQGxUFsUBzEBsVBbFAcxAbFQWxQtLhWUFs1+eqn5y9vQeVrcq2gtixQtKgd1MZeZOAn
         Pzx744Onf73z1he/ffj6578+eeXJz4cFR+DFdpVXPdVXntofiNpBbVigaFEzKH8O393/+9JH3/79poxa
@@ -164,12 +164,28 @@
   <data name="buttonSetting.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wQAADsEBuJFr7QAAAUBJREFUOE+lkzFug0AQRX2DKIUrboMoaJC4BOIQqUAUcAJouQR3gM5yiTgBikQD
+        wAAADsABataJCQAAAUBJREFUOE+lkzFug0AQRX2DKIUrboMoaJC4BOIQqUAUcAJouQR3gM5yiTgBikQD
         7XjfZgeBFUW2stI345n/P7Ozy+W4tm27GngGXwbyBHLUro5+XhQM7uu6fpvnrSgK8X3fgpicq93hOtnP
         IkGhbVtJ01SmaZIkSaTrOgtictTgnEyO4jiOpaoqCcNQgiDY2ycmV5al5ZxMzI9Ha7hDQDAMwy5WaI4X
         wHXb8TBgODda5C1931viOI5S17UFMTlM4MBFgxYDOyT2qW0jiKJIsiyTPM9trCZw4KJZlkWsAZNmWMSg
         aRor1v+Y0In+h4tmnuffDSC/ZfDfLZyGqNNG8OoQ92PkiJTI84i/jvHDoH/lIlF7ukifeht3E9xpkX0y
         LEBMjtrpFh6XmrjW3vuYdJkCJvZzZsIcEyAm52oH8eXyAJyoyKt3UO1nAAAAAElFTkSuQmCC
 </value>
+  </data>
+  <data name="textBoxLayerName.ToolTip" xml:space="preserve">
+    <value>Layer name (optional setting)
+
+Input layer name apply in photoshop.
+The following words beginning with @ will be replaced by the value they represent
+@seed, @prompt, @negative, @cfg, @steps, @strength, @sampler
+@subseed, @subseedstrength, @clip, @date</value>
+  </data>
+  <data name="label9.ToolTip" xml:space="preserve">
+    <value>Layer name (optional setting)
+
+Input layer name apply in photoshop.
+The following words beginning with @ will be replaced by the value they represent
+@seed, @prompt, @negative, @cfg, @steps, @strength, @sampler
+@subseed, @subseedstrength, @clip, @date</value>
   </data>
 </root>
