@@ -20,7 +20,7 @@ namespace Invary.IvyPhotoshopDiffusion
 
 
 		[XmlIgnore]
-		public static int nVersion { get; } = 103;
+		public static int nVersion { get; } = 104;
 
 		[XmlIgnore]
 		public static string strVersion { get; } = $"Ver{nVersion}";

@@ -429,6 +429,7 @@ namespace Invary.IvyPhotoshopDiffusion
 							}
 
 							var responseObj = Automatic1111.Send(request);
+							int index = 0;
 							foreach (var encodedimg in responseObj.images)
 							{
 								if (_bAbort)
@@ -450,23 +451,33 @@ namespace Invary.IvyPhotoshopDiffusion
 									var name = strLayerNameTemplate;
 									//"@seed, @prompt, @negative, @cfg, @steps, @clip, @strength, @sampler, @subseed, @subseedstrength";
 									name = name.Replace(@"@date", $"{DateTime.Now.ToString("yyyyMMdd_HHmmss")}");
-									name = name.Replace(@"@seed", $"{responseObj.info.seed}");
-									name = name.Replace(@"@prompt", $"{responseObj.info.prompt}");
-									name = name.Replace(@"@negative", $"{responseObj.info.negative_prompt}");
-									name = name.Replace(@"@cfg", $"{responseObj.info.cfg_scale}");
-									name = name.Replace(@"@steps", $"{responseObj.info.steps}");
-									name = name.Replace(@"@clip", $"{responseObj.info.clip_skip}");
-									name = name.Replace(@"@strength", $"{responseObj.info.denoising_strength}");
-									name = name.Replace(@"@sampler", $"{responseObj.info.sampler}");
-									name = name.Replace(@"@subseedstrength", $"{responseObj.info.subseed_strength}");
-									name = name.Replace(@"@subseed", $"{responseObj.info.subseed}");
+
+									ParametersBase param = null;
+									if (responseObj.GetType() == typeof(JsonResponseImg2Img))
+										param = (responseObj as JsonResponseImg2Img).parameters;
+									else if (responseObj.GetType() == typeof(JsonResponseTxt2Img))
+										param = (responseObj as JsonResponseTxt2Img).parameters;
+									if (param != null)
+									{
+										name = name.Replace(@"@seed", $"{responseObj.Info.all_seeds[index]}");
+										name = name.Replace(@"@prompt", $"{param.prompt}");
+										name = name.Replace(@"@negative", $"{param.negative_prompt}");
+										name = name.Replace(@"@cfg", $"{param.cfg_scale}");
+										name = name.Replace(@"@steps", $"{param.steps}");
+										name = name.Replace(@"@strength", $"{param.denoising_strength}");
+										name = name.Replace(@"@sampler", $"{param.sampler_index}");
+										name = name.Replace(@"@subseedstrength", $"{param.subseed_strength}");
+										name = name.Replace(@"@subseed", $"{responseObj.Info.all_subseeds[index]}");
+										name = name.Replace(@"@clip", $"{responseObj.Info.clip_skip}");
+									}
 									appRef.ActiveDocument.ActiveLayer.name = name;
 									LogMessage.WriteLine($"layer: {name}");
 								}
 
 								Photoshop.SetSelection(appRef, curSelection);
+								index++;
 							}
-							foreach (var item in responseObj.info.infotexts)
+							foreach (var item in responseObj.Info.infotexts)
 							{
 								LogMessage.WriteLine(item);
 							}

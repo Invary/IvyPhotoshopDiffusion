@@ -1,13 +1,13 @@
 # IvyPhotoshopDiffusion for Windows
 
 
-# Attention
- latest version of AUTOMATIC1111 cannot work,This is due to a change in the API specification.<br />
- use old version of AUTOMATIC1111<br />
- this version is work<br />
- https://github.com/AUTOMATIC1111/stable-diffusion-webui/tree/9ceef81f77ecce89f0c8f412c4d849210d852e82
+## Attention
+Recently, Automatic1111 has been changing its API specification at the level of once every few days. <br />
+As a result, there are times when an error occurs and the system does not work. <br />
+In this case, please use the version of Automatic1111 that is a few days old. <br />
 
 <br />
+
 
 ##  About
 IvyPhotoshopDiffusion is a tool for generating AI image on Photoshop for Windows.
@@ -46,12 +46,6 @@ latest version of [IvyPhotoshopDiffusion](https://github.com/Invary/IvyPhotoshop
 
 ##  Install
 
-# Attention
- latest version of AUTOMATIC1111 cannot work,This is due to a change in the API specification.<br />
- use old version of AUTOMATIC1111<br />
- this version is work<br />
- https://github.com/AUTOMATIC1111/stable-diffusion-webui/tree/9ceef81f77ecce89f0c8f412c4d849210d852e82
-
 1. [Download](https://github.com/AUTOMATIC1111/stable-diffusion-webui) latest version of **`Automatic1111 Stable Diffusion web UI (Automatic1111)`**
 2. Install **`Automatic1111`** to the installation folder.
 3. Check generate images on **`Automatic1111`**
@@ -87,10 +81,20 @@ see [Documents](https://github.com/Invary/IvyPhotoshopDiffusion/tree/main/doc) p
 
 ##  Changelog
 
+- Ver104 <br />
+Support latest version of Automatic1111's API <br />
+
+Ver104 work for Automatic1111 2022/10/31 06:00 UTC version<br />
+https://github.com/AUTOMATIC1111/stable-diffusion-webui/tree/17a2076f72562b428052ee3fc8c43d19c03ecd1e
+
+
 - Ver103 <br />
 Save last prompt/negative/layername setting for default value <br />
 Add setting layer name function <br />
 Bug fix image processing exception <br />
+
+Ver103 work for Automatic1111 2022/10/28 version<br />
+https://github.com/AUTOMATIC1111/stable-diffusion-webui/tree/9ceef81f77ecce89f0c8f412c4d849210d852e82
 
 
 - Ver102 <br />
