@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -54,6 +55,49 @@ namespace Invary.IvyPhotoshopDiffusion
 			appRef.ActiveDocument.Selection.Select(selRegion);
 			return true;
 		}
+
+
+		public static Color GetForegroundColor(dynamic appRef)
+		{
+			//SolidColor
+			var color = appRef.ForegroundColor;
+
+			//to RGBColor
+			var rgb = color.RGB;
+
+			return Color.FromArgb((int)rgb.Red, (int)rgb.Green, (int)rgb.Blue);
+		}
+
+
+		public static Color GetBackgroundColor(dynamic appRef)
+		{
+			//SolidColor
+			var color = appRef.BackgroundColor;
+
+			//to RGBColor
+			var rgb = color.RGB;
+
+			return Color.FromArgb((int)rgb.Red, (int)rgb.Green, (int)rgb.Blue);
+		}
+
+		public static void SetForegroundColor(dynamic appRef, Color color)
+		{
+			var tmp = appRef.ForegroundColor;
+			tmp.RGB.Red = color.R;
+			tmp.RGB.Green = color.G;
+			tmp.RGB.Blue = color.B;
+			appRef.ForegroundColor = tmp;
+		}
+
+		public static void SetBackgroundColor(dynamic appRef, Color color)
+		{
+			var tmp = appRef.BackgroundColor;
+			tmp.RGB.Red = color.R;
+			tmp.RGB.Green = color.G;
+			tmp.RGB.Blue = color.B;
+			appRef.BackgroundColor = tmp;
+		}
+
 
 
 

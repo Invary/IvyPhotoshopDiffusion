@@ -26,6 +26,9 @@ namespace Invary.IvyPhotoshopDiffusion
 	//TODO: save last setting
 	//TODO: dupe exec check?
 
+	//TODO: 1111 info text to setting
+	//TODO: NAI prompt conv
+	//TODO: ctrl+↑↓ at prompt inputing
 
 
 
@@ -57,6 +60,10 @@ namespace Invary.IvyPhotoshopDiffusion
 			textBoxPrompt.Text = XmlSetting.Current.LastPrompt;
 			textBoxNegativePrompt.Text = XmlSetting.Current.LastNegativePrompt;
 			textBoxLayerName.Text = XmlSetting.Current.LastLayerName;
+
+			numericUpDownClipSkip.Value = XmlSetting.Current.LastClipSkip;
+			numericUpDownENSD.Value = XmlSetting.Current.LastENSD;
+
 
 
 			labelNoiseScale100.Text = $"{(double)trackBarNoiseScale100.Value / 100:0.##}";
@@ -178,6 +185,40 @@ namespace Invary.IvyPhotoshopDiffusion
 
 
 
+			//transparent color button, set right click menu
+			{
+				ContextMenu menu = new ContextMenu();
+
+				menu.MenuItems.Add(new MenuItem("Get from Photoshop foreground color", delegate
+				{
+					dynamic appRef = Photoshop.CreateInstance();
+					var color = Photoshop.GetForegroundColor(appRef);
+					buttonSetTransparentColor.BackColor = color;
+					XmlSetting.Current.TransparentColor = color;
+				}));
+				menu.MenuItems.Add(new MenuItem("Get from Photoshop background color", delegate
+				{
+					dynamic appRef = Photoshop.CreateInstance();
+					var color = Photoshop.GetBackgroundColor(appRef);
+					buttonSetTransparentColor.BackColor = color;
+					XmlSetting.Current.TransparentColor = color;
+				}));
+
+				menu.MenuItems.Add(new MenuItem("-"));
+
+				menu.MenuItems.Add(new MenuItem("Set to Photoshop foreground color", delegate
+				{
+					dynamic appRef = Photoshop.CreateInstance();
+					Photoshop.SetForegroundColor(appRef, XmlSetting.Current.TransparentColor);
+				}));
+				menu.MenuItems.Add(new MenuItem("Set to Photoshop background color", delegate
+				{
+					dynamic appRef = Photoshop.CreateInstance();
+					Photoshop.SetBackgroundColor(appRef, XmlSetting.Current.TransparentColor);
+				}));
+
+				buttonSetTransparentColor.ContextMenu = menu;
+			}
 
 
 
@@ -224,6 +265,10 @@ namespace Invary.IvyPhotoshopDiffusion
 				XmlSetting.Current.LastPrompt = textBoxPrompt.Text;
 				XmlSetting.Current.LastNegativePrompt = textBoxNegativePrompt.Text;
 				XmlSetting.Current.LastLayerName = textBoxLayerName.Text;
+
+				XmlSetting.Current.LastClipSkip = (int)numericUpDownClipSkip.Value;
+				XmlSetting.Current.LastENSD = (int)numericUpDownENSD.Value;
+
 
 				XmlSetting.Current.Save();
 				TaskManager.AbortAll();
@@ -312,6 +357,12 @@ namespace Invary.IvyPhotoshopDiffusion
 							request.width = int.Parse((string)comboBoxWidth.SelectedItem);
 							request.height = int.Parse((string)comboBoxHeight.SelectedItem);
 
+							request.restore_faces = checkBoxRestoreFace.Checked;
+							request.tiling = checkBoxTiling.Checked;
+
+							request.override_settings = new Override_Settings();
+							request.override_settings.CLIP_stop_at_last_layers = (int)numericUpDownClipSkip.Value;
+							request.override_settings.eta_noise_seed_delta = (int)numericUpDownENSD.Value;
 
 							if (request.GetType() == typeof(JsonRequestImg2Img))
 							{

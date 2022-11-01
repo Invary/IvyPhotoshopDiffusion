@@ -20,7 +20,7 @@ namespace Invary.IvyPhotoshopDiffusion
 
 
 		[XmlIgnore]
-		public static int nVersion { get; } = 104;
+		public static int nVersion { get; } = 105;
 
 		[XmlIgnore]
 		public static string strVersion { get; } = $"Ver{nVersion}";
@@ -59,6 +59,8 @@ namespace Invary.IvyPhotoshopDiffusion
 
 		public string LastLayerName { set; get; } = "@date, seed=@seed, strength=@strength, cfg=@cfg, steps=@steps, @sampler, @prompt";
 
+		public int LastClipSkip { set; get; } = 1;
+		public int LastENSD { set; get; } = 0;
 
 
 

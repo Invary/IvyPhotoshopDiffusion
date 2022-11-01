@@ -79,6 +79,12 @@
 			this.buttonLogWrite = new System.Windows.Forms.Button();
 			this.textBoxLayerName = new System.Windows.Forms.TextBox();
 			this.label9 = new System.Windows.Forms.Label();
+			this.checkBoxRestoreFace = new System.Windows.Forms.CheckBox();
+			this.checkBoxTiling = new System.Windows.Forms.CheckBox();
+			this.numericUpDownENSD = new System.Windows.Forms.NumericUpDown();
+			this.label10 = new System.Windows.Forms.Label();
+			this.label11 = new System.Windows.Forms.Label();
+			this.numericUpDownClipSkip = new System.Windows.Forms.NumericUpDown();
 			((System.ComponentModel.ISupportInitialize)(this.trackBarNoiseScale100)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.trackBarMaskBlur)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBoxMask)).BeginInit();
@@ -89,6 +95,8 @@
 			((System.ComponentModel.ISupportInitialize)(this.trackBarBatchCount)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBoxNewVersionExists)).BeginInit();
 			this.groupBox1.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.numericUpDownENSD)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.numericUpDownClipSkip)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// buttonGenerate
@@ -320,9 +328,7 @@
 			this.buttonSetTransparentColor.Name = "buttonSetTransparentColor";
 			this.buttonSetTransparentColor.Size = new System.Drawing.Size(75, 23);
 			this.buttonSetTransparentColor.TabIndex = 22;
-			this.toolTip.SetToolTip(this.buttonSetTransparentColor, "Background color in photoshop.\r\nAttension: do not use transparent layer in photos" +
-        "hop, it cause error.\r\nUse the transparent color setting here for locations you w" +
-        "ish to treat as transparent.");
+			this.toolTip.SetToolTip(this.buttonSetTransparentColor, resources.GetString("buttonSetTransparentColor.ToolTip"));
 			this.buttonSetTransparentColor.UseVisualStyleBackColor = true;
 			this.buttonSetTransparentColor.Click += new System.EventHandler(this.buttonSetTransparentColor_Click);
 			// 
@@ -616,11 +622,91 @@
 			this.label9.Text = "Layer name";
 			this.toolTip.SetToolTip(this.label9, resources.GetString("label9.ToolTip"));
 			// 
+			// checkBoxRestoreFace
+			// 
+			this.checkBoxRestoreFace.AutoSize = true;
+			this.checkBoxRestoreFace.Location = new System.Drawing.Point(25, 370);
+			this.checkBoxRestoreFace.Name = "checkBoxRestoreFace";
+			this.checkBoxRestoreFace.Size = new System.Drawing.Size(96, 16);
+			this.checkBoxRestoreFace.TabIndex = 50;
+			this.checkBoxRestoreFace.Text = "Restore faces";
+			this.checkBoxRestoreFace.UseVisualStyleBackColor = true;
+			// 
+			// checkBoxTiling
+			// 
+			this.checkBoxTiling.AutoSize = true;
+			this.checkBoxTiling.Location = new System.Drawing.Point(24, 392);
+			this.checkBoxTiling.Name = "checkBoxTiling";
+			this.checkBoxTiling.Size = new System.Drawing.Size(52, 16);
+			this.checkBoxTiling.TabIndex = 51;
+			this.checkBoxTiling.Text = "Tiling";
+			this.checkBoxTiling.UseVisualStyleBackColor = true;
+			// 
+			// numericUpDownENSD
+			// 
+			this.numericUpDownENSD.Location = new System.Drawing.Point(65, 441);
+			this.numericUpDownENSD.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+			this.numericUpDownENSD.Name = "numericUpDownENSD";
+			this.numericUpDownENSD.Size = new System.Drawing.Size(85, 19);
+			this.numericUpDownENSD.TabIndex = 52;
+			// 
+			// label10
+			// 
+			this.label10.AutoSize = true;
+			this.label10.Location = new System.Drawing.Point(24, 445);
+			this.label10.Name = "label10";
+			this.label10.Size = new System.Drawing.Size(35, 12);
+			this.label10.TabIndex = 53;
+			this.label10.Text = "ENSD";
+			this.toolTip.SetToolTip(this.label10, "Eta noise seed delta\r\n\r\nderault: 1\r\nNovelAI\'s default: 31337");
+			// 
+			// label11
+			// 
+			this.label11.AutoSize = true;
+			this.label11.Location = new System.Drawing.Point(24, 420);
+			this.label11.Name = "label11";
+			this.label11.Size = new System.Drawing.Size(25, 12);
+			this.label11.TabIndex = 55;
+			this.label11.Text = "Clip";
+			this.toolTip.SetToolTip(this.label11, "Clip skip\r\n\r\ndefault: 1\r\nNovelAI\'s default: 2");
+			// 
+			// numericUpDownClipSkip
+			// 
+			this.numericUpDownClipSkip.Location = new System.Drawing.Point(65, 416);
+			this.numericUpDownClipSkip.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+			this.numericUpDownClipSkip.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+			this.numericUpDownClipSkip.Name = "numericUpDownClipSkip";
+			this.numericUpDownClipSkip.Size = new System.Drawing.Size(85, 19);
+			this.numericUpDownClipSkip.TabIndex = 54;
+			this.numericUpDownClipSkip.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+			// 
 			// FormMain
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(794, 871);
+			this.Controls.Add(this.label11);
+			this.Controls.Add(this.numericUpDownClipSkip);
+			this.Controls.Add(this.label10);
+			this.Controls.Add(this.numericUpDownENSD);
+			this.Controls.Add(this.checkBoxTiling);
+			this.Controls.Add(this.checkBoxRestoreFace);
 			this.Controls.Add(this.label9);
 			this.Controls.Add(this.textBoxLayerName);
 			this.Controls.Add(this.buttonLogWrite);
@@ -676,6 +762,8 @@
 			((System.ComponentModel.ISupportInitialize)(this.trackBarBatchCount)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBoxNewVersionExists)).EndInit();
 			this.groupBox1.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.numericUpDownENSD)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.numericUpDownClipSkip)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -732,6 +820,12 @@
 		private System.Windows.Forms.Button buttonLogWrite;
 		private System.Windows.Forms.TextBox textBoxLayerName;
 		private System.Windows.Forms.Label label9;
+		private System.Windows.Forms.CheckBox checkBoxRestoreFace;
+		private System.Windows.Forms.CheckBox checkBoxTiling;
+		private System.Windows.Forms.NumericUpDown numericUpDownENSD;
+		private System.Windows.Forms.Label label10;
+		private System.Windows.Forms.Label label11;
+		private System.Windows.Forms.NumericUpDown numericUpDownClipSkip;
 	}
 }
 

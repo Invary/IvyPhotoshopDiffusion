@@ -19,6 +19,18 @@ namespace Invary.IvyPhotoshopDiffusion
 	// https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/API
 
 
+	//progress api
+	//
+	//https://github.com/AUTOMATIC1111/stable-diffusion-webui/pull/3722
+	//
+	//Call /sdapi/v1/txt2img like this:
+	//{
+	//  override_settings: { show_progress_every_n_steps: 5 },
+	//}
+	//And /sdapi/v1/progress will respond with a valid current_image field.
+
+
+
 
 	internal class Automatic1111
 	{
@@ -120,6 +132,57 @@ namespace Invary.IvyPhotoshopDiffusion
 
 
 
+		//extra check code
+		//{
+		//	JsonRequestExtra objJson = new JsonRequestExtra();
+		//	objJson.image = Automatic1111.Image2String(new Bitmap(512, 512));
+		//	Automatic1111.SendExtra(objJson);
+		//}
+
+
+		////TODO: current version of Automatic1111, extra api cannot work??
+		//public static JsonResponseImg2Img SendExtra(JsonRequestExtra objJson)
+		//{
+		//	string jsonString = JsonSerializer.Serialize(objJson);
+
+		//	var url = $"{XmlSetting.Current.Automatic1111ApiUrl}/sdapi/v1/extra-single-image";
+
+		//	var request = WebRequest.Create(url);
+		//	request.Method = "POST";
+
+		//	string json = jsonString;
+		//	byte[] byteArray = Encoding.UTF8.GetBytes(json);
+
+		//	request.ContentType = "application/json";
+		//	request.ContentLength = byteArray.Length;
+
+		//	using (var reqStream = request.GetRequestStream())
+		//	{
+		//		reqStream.Write(byteArray, 0, byteArray.Length);
+
+		//		using (var response = request.GetResponse())
+		//		{
+		//			Debug.WriteLine(((HttpWebResponse)response).StatusDescription);
+
+		//			using (var respStream = response.GetResponseStream())
+		//			using (var reader = new StreamReader(respStream))
+		//			{
+		//				string jsonresponse = reader.ReadToEnd();
+
+		//				//TODO: response json is unknown
+		//				Debug.Assert(false);
+		//				var ret = JsonSerializer.Deserialize<JsonResponseImg2Img>(jsonresponse);
+		//				ret.Info = JsonSerializer.Deserialize<JsonResponseInfo>(ret.info);
+		//				return ret;
+		//			}
+		//		}
+		//	}
+		//}
+
+
+
+
+
 		public static string Image2String(Image image)
 		{
 			if (image == null)
@@ -134,7 +197,6 @@ namespace Invary.IvyPhotoshopDiffusion
 				ms.Read(rawdata, 0, rawdata.Length);
 
 				return "data:image/png;base64," + Convert.ToBase64String(rawdata);
-				//return Convert.ToBase64String(rawdata);
 			}
 		}
 
@@ -143,6 +205,7 @@ namespace Invary.IvyPhotoshopDiffusion
 
 		public static bool SaveBase64EncodingData(string file, string text)
 		{
+			//TODO: fixed image type
 			text = text.Replace("data:image/png;base64,", "");
 			var rawdata = Convert.FromBase64String(text);
 
@@ -169,6 +232,7 @@ namespace Invary.IvyPhotoshopDiffusion
 		public float denoising_strength { get; set; } = 0.75f;
 
 		public decimal seed { get; set; } = -1;
+
 		public decimal subseed { get; set; } = -1;
 		public float subseed_strength { get; set; } = 0.0f;
 		public int seed_resize_from_h { get; set; } = -1;
@@ -187,12 +251,27 @@ namespace Invary.IvyPhotoshopDiffusion
 
 		public string negative_prompt { get; set; } = "";
 
-		public int eta { get; set; } = 0;
+		public float eta { get; set; } = 0;
 
-		public int s_churn { get; set; } = 0;
-		public int s_tmax { get; set; } = 0;
-		public int s_tmin { get; set; } = 0;
-		public int s_noise { get; set; } = 1;
+		/// <summary>
+		/// Sigma Churn
+		/// </summary>
+		public float s_churn { get; set; } = 0;
+
+		/// <summary>
+		/// Sigma max
+		/// </summary>
+		public float s_tmax { get; set; } = 0;
+
+		/// <summary>
+		/// Sigma min
+		/// </summary>
+		public float s_tmin { get; set; } = 0;
+
+		/// <summary>
+		/// Sigma noise
+		/// </summary>
+		public float s_noise { get; set; } = 1;
 
 		public Override_Settings override_settings { get; set; }
 
@@ -203,6 +282,8 @@ namespace Invary.IvyPhotoshopDiffusion
 
 	public class Override_Settings
 	{
+		public int eta_noise_seed_delta { get; set; } = 0;
+		public int CLIP_stop_at_last_layers { get; set; } = 1;
 	}
 
 
@@ -258,6 +339,8 @@ namespace Invary.IvyPhotoshopDiffusion
 	public class JsonResponseBase
 	{
 		public string[] images { get; set; }
+
+		//automatic1111's bug. response is json text, not object. so need to deserialize this
 		public string info { get; set; }
 
 		[JsonIgnore]
@@ -265,56 +348,8 @@ namespace Invary.IvyPhotoshopDiffusion
 	}
 
 
-	//public class Parameters
-	//{
-	//	public bool enable_hr { get; set; }
-	//	public float denoising_strength { get; set; }
-	//	public int firstphase_width { get; set; }
-	//	public int firstphase_height { get; set; }
-	//	public string prompt { get; set; }
-	//	public object styles { get; set; }
-	//	public int seed { get; set; }
-	//	public int subseed { get; set; }
-	//	public float subseed_strength { get; set; }
-	//	public int seed_resize_from_h { get; set; }
-	//	public int seed_resize_from_w { get; set; }
-	//	public int batch_size { get; set; }
-	//	public int n_iter { get; set; }
-	//	public int steps { get; set; }
-	//	public float cfg_scale { get; set; }
-	//	public int width { get; set; }
-	//	public int height { get; set; }
-	//	public bool restore_faces { get; set; }
-	//	public bool tiling { get; set; }
-	//	public string negative_prompt { get; set; }
-	//	public float eta { get; set; }
-	//	public float s_churn { get; set; }
-	//	public float s_tmax { get; set; }
-	//	public float s_tmin { get; set; }
-	//	public float s_noise { get; set; }
-	//	public object override_settings { get; set; }
-	//	public string sampler_index { get; set; }
-	//}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-	//public class JsonResponseBase
-	//{
-	//	public string[] images { get; set; }
-	//	public Info info { get; set; }
-	//}
 
 
 
@@ -347,12 +382,12 @@ namespace Invary.IvyPhotoshopDiffusion
 		public bool restore_faces { get; set; }
 		public bool tiling { get; set; }
 		public string negative_prompt { get; set; }
-		public object eta { get; set; }
+		public float eta { get; set; }
 		public float s_churn { get; set; }
-		public object s_tmax { get; set; }
+		public float s_tmax { get; set; }
 		public float s_tmin { get; set; }
 		public float s_noise { get; set; }
-		public object override_settings { get; set; }
+		public Override_Settings override_settings { get; set; }
 		public string sampler_index { get; set; }
 	}
 
@@ -364,40 +399,6 @@ namespace Invary.IvyPhotoshopDiffusion
 		public int firstphase_width { get; set; }
 		public int firstphase_height { get; set; }
 	}
-
-
-	//public class Info
-	//{
-	//	public string prompt { get; set; }
-	//	public string[] all_prompts { get; set; }
-	//	public string negative_prompt { get; set; }
-	//	public decimal seed { get; set; }
-	//	public decimal[] all_seeds { get; set; }
-	//	public decimal subseed { get; set; }
-	//	public decimal[] all_subseeds { get; set; }
-	//	public float subseed_strength { get; set; }
-	//	public int width { get; set; }
-	//	public int height { get; set; }
-	//	public int sampler_index { get; set; }
-	//	public string sampler { get; set; }
-	//	public float cfg_scale { get; set; }
-	//	public int steps { get; set; }
-	//	public int batch_size { get; set; }
-	//	public bool restore_faces { get; set; }
-	//	public object face_restoration_model { get; set; }
-	//	public string sd_model_hash { get; set; }
-	//	public int seed_resize_from_w { get; set; }
-	//	public int seed_resize_from_h { get; set; }
-	//	public float denoising_strength { get; set; }
-	//	public Extra_Generation_Params extra_generation_params { get; set; }
-	//	public int index_of_first_image { get; set; }
-	//	public string[] infotexts { get; set; }
-	//	public object[] styles { get; set; }
-	//	public string job_timestamp { get; set; }
-	//	public int clip_skip { get; set; }
-	//}
-
-
 
 
 
@@ -469,6 +470,36 @@ namespace Invary.IvyPhotoshopDiffusion
 		public string job_timestamp { get; set; }
 		public int clip_skip { get; set; }
 	}
+
+
+
+
+
+
+
+
+
+
+
+	//public class JsonRequestExtra
+	//{
+	//	public bool upscale_first { get; set; } = true;
+
+	//	public int resize_mode { get; set; } = 0;
+	//	public bool show_extras_results { get; set; } = true;
+	//	public float gfpgan_visibility { get; set; } = 0;
+	//	public float codeformer_visibility { get; set; } = 0;
+	//	public float codeformer_weight { get; set; } = 0;
+	//	public int upscaling_resize { get; set; } = 2;
+	//	public int upscaling_resize_w { get; set; } = 512;
+	//	public int upscaling_resize_h { get; set; } = 512;
+	//	public bool upscaling_crop { get; set; } = true;
+	//	public string upscaler_1 { get; set; } = "None";
+	//	public string upscaler_2 { get; set; } = "None";
+	//	public int extras_upscaler_2_visibility { get; set; } = 0;
+
+	//	public string image { get; set; }
+	//}
 
 
 

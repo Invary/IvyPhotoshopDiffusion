@@ -81,9 +81,15 @@ see [Documents](https://github.com/Invary/IvyPhotoshopDiffusion/tree/main/doc) p
 
 ##  Changelog
 
+- Ver105 <br />
+Support restore faces, tiling, ENSD, clip skip<br />
+Set/get photoshop forground/background color <br />
+Bug fix json request/response <br />
+Ver105 work for Automatic1111 2022/11/01 03:00 UTC version<br />
+https://github.com/AUTOMATIC1111/stable-diffusion-webui/tree/5c9b3625fa03f18649e1843b5e9f2df2d4de94f9
+
 - Ver104 <br />
 Support latest version of Automatic1111's API <br />
-
 Ver104 work for Automatic1111 2022/10/31 06:00 UTC version<br />
 https://github.com/AUTOMATIC1111/stable-diffusion-webui/tree/17a2076f72562b428052ee3fc8c43d19c03ecd1e
 
@@ -92,7 +98,6 @@ https://github.com/AUTOMATIC1111/stable-diffusion-webui/tree/17a2076f72562b42805
 Save last prompt/negative/layername setting for default value <br />
 Add setting layer name function <br />
 Bug fix image processing exception <br />
-
 Ver103 work for Automatic1111 2022/10/28 version<br />
 https://github.com/AUTOMATIC1111/stable-diffusion-webui/tree/9ceef81f77ecce89f0c8f412c4d849210d852e82
 
