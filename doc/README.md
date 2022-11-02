@@ -19,6 +19,7 @@ Select color in photoshop, and use right click menu to get from photoshop. <br /
 <img src="https://raw.githubusercontent.com/Invary/IvyPhotoshopDiffusion/main/doc/res/doc01_getset.png" width="400" /> 
 
 Or you can click color button to pick in IvyPhotoshopDiffusion. <br />
+
 https://user-images.githubusercontent.com/99020933/198703995-d0f425d7-366e-4ab6-9a25-175b6c548910.mp4
 
 <br />
