@@ -26,8 +26,8 @@ namespace Invary.IvyPhotoshopDiffusion
 	//TODO: save last setting
 	//TODO: dupe exec check?
 
-	//TODO: 1111 info text to setting
 	//TODO: NAI prompt conv
+	//TODO: NAI infotext import
 	//TODO: ctrl+↑↓ at prompt inputing
 
 
@@ -103,6 +103,12 @@ namespace Invary.IvyPhotoshopDiffusion
 			};
 
 
+			labelSubseedStrength.Text = $"{(double)trackBarSubseedStrength100.Value / 100:0.##}";
+			trackBarSubseedStrength100.ValueChanged += delegate
+			{
+				labelSubseedStrength.Text = $"{(double)trackBarSubseedStrength100.Value / 100:0.##}";
+			};
+
 
 
 			buttonSelectionRestore.Enabled = false;
@@ -149,6 +155,18 @@ namespace Invary.IvyPhotoshopDiffusion
 			}
 			comboBoxWidth.SelectedItem = "512";
 			comboBoxHeight.SelectedItem = "512";
+
+
+			//subseedW/H with "-1" and "0"
+			comboBoxSubseedW.Items.Add("-1");
+			comboBoxSubseedH.Items.Add("-1");
+			for (int n = 0; n <= 2048; n += 64)
+			{
+				comboBoxSubseedW.Items.Add($"{n}");
+				comboBoxSubseedH.Items.Add($"{n}");
+			}
+			comboBoxSubseedW.SelectedItem = "0";
+			comboBoxSubseedH.SelectedItem = "0";
 
 
 			buttonSetTransparentColor.BackColor = XmlSetting.Current.TransparentColor;
@@ -277,6 +295,10 @@ namespace Invary.IvyPhotoshopDiffusion
 		}
 
 
+
+
+
+
 		void RefreshRecentCombobox()
 		{
 			comboBoxRecentPrompt.Items.Clear();
@@ -363,6 +385,12 @@ namespace Invary.IvyPhotoshopDiffusion
 							request.override_settings = new Override_Settings();
 							request.override_settings.CLIP_stop_at_last_layers = (int)numericUpDownClipSkip.Value;
 							request.override_settings.eta_noise_seed_delta = (int)numericUpDownENSD.Value;
+
+							request.subseed = numericUpDownSubseed.Value;
+							request.subseed_strength = (float)trackBarSubseedStrength100.Value / 100;
+							request.seed_resize_from_w = int.Parse((string)comboBoxSubseedW.SelectedItem);
+							request.seed_resize_from_h = int.Parse((string)comboBoxSubseedH.SelectedItem);
+
 
 							if (request.GetType() == typeof(JsonRequestImg2Img))
 							{
@@ -871,5 +899,211 @@ namespace Invary.IvyPhotoshopDiffusion
 		{
 			LogMessage.WriteLine($"note: {textBoxLogWrite.Text}");
 		}
+
+
+
+		private void buttonReadInfoText_Click(object sender, EventArgs e)
+		{
+			ImportAutomatic1111InfotextToUI(textBoxPrompt.Text);
+		}
+
+
+
+		void ImportAutomatic1111InfotextToUI(string text)
+		{
+			/*
+			masterpiece, best quality, 
+			girl
+			Negative prompt: lowres, bad anatomy, bad hands
+			man
+			Steps: 23, Sampler: Euler a, CFG scale: 8, Seed: 1574434520, Size: 768x1024, Model hash: 81761151, Model: sdv1-5-pruned-emaonly, Variation seed: 123, Variation seed strength: 0.17, Seed resize from: 320x384, ENSD: 31337
+			*/
+			text = text.Replace("\r", "");
+			var lines = text.Split('\n');
+			var prompt = "";
+			var negative = "";
+
+			int i = 0;
+			for (; i < lines.Length; i++)
+			{
+				if (lines[i].StartsWith("Negative prompt: "))
+					break;
+				if (lines[i].StartsWith("Steps: "))
+					break;
+				if (lines[i].StartsWith("Sampler: "))
+					break;
+				if (lines[i].StartsWith("Seed: "))
+					break;
+				if (lines[i].StartsWith("Size: "))
+					break;
+
+				prompt += lines[i];
+				prompt += "\n";
+			}
+			for (; i < lines.Length; i++)
+			{
+				if (lines[i].StartsWith("Negative prompt: "))
+				{
+					negative = lines[i].Substring("Negative prompt: ".Length, lines[i].Length - "Negative prompt: ".Length);
+					negative += "\n";
+					continue;
+				}
+				if (lines[i].StartsWith("Steps: "))
+					break;
+				if (lines[i].StartsWith("Sampler: "))
+					break;
+				if (lines[i].StartsWith("Seed: "))
+					break;
+				if (lines[i].StartsWith("Size: "))
+					break;
+
+				negative += lines[i];
+				negative += "\n";
+			}
+
+			for (; i < lines.Length; i++)
+			{
+				var options = lines[i].Split(',');
+				foreach (var item in options)
+				{
+					//case sensitive
+					// DO NOT ignore upper/lower character
+
+					var option = item.Trim(' ');
+
+					SetOptionValue("Steps: ", option, trackBarStep);
+					SetOptionValue("Sampler: ", option, comboBoxSampler);
+					SetOptionValue("CFG scale: ", option, trackBarCfgScale100, 100);
+					SetOptionValue("Seed: ", option, numericUpDownSeed);
+					SetOptionValue("Size: ", option, comboBoxWidth, comboBoxHeight);
+
+					SetOptionValue("Variation seed: ", option, numericUpDownSubseed);
+					SetOptionValue("Variation seed strength: ", option, trackBarSubseedStrength100, 100);
+					SetOptionValue("Seed resize from: ", option, comboBoxSubseedW, comboBoxSubseedH);
+
+					SetOptionValue("ENSD: ", option, numericUpDownENSD);
+					SetOptionValue("Clip skip: ", option, numericUpDownClipSkip);
+
+					SetOptionValue("Denoising strength: ", option, trackBarCfgScale100, 100);
+					SetOptionValue("Mask blur: ", option, trackBarMaskBlur);
+				}
+			}
+
+			textBoxPrompt.Text = prompt.Replace("\n", "\r\n");
+			textBoxNegativePrompt.Text = negative.Replace("\n", "\r\n");
+		}
+
+
+
+		/// <summary>
+		/// "ENSD: 31337" to NumericUpDown
+		/// </summary>
+		/// <param name="header">"ENSD: "</param>
+		/// <param name="text">"ENSD: 31337"</param>
+		/// <param name="numericUpDown"></param>
+		/// <returns></returns>
+		bool SetOptionValue(string header, string text, NumericUpDown numericUpDown)
+		{
+			if (text.StartsWith(header) == false)
+				return false;
+			text = text.Substring(header.Length, text.Length - header.Length);
+
+			try
+			{
+				decimal value = decimal.Parse(text);
+				numericUpDown.Value = value;
+				return true;
+			}
+			catch (Exception)
+			{
+				return false;
+			}
+		}
+
+
+		/// <summary>
+		/// "Sampler: Euler a" to combobox
+		/// </summary>
+		/// <param name="header">"Sampler: "</param>
+		/// <param name="text">"Sampler: Euler a"</param>
+		bool SetOptionValue(string header, string text, ComboBox comboBox)
+		{
+			if (text.StartsWith(header) == false)
+				return false;
+			text = text.Substring(header.Length, text.Length - header.Length);
+
+			try
+			{
+				comboBox.SelectedItem = text;
+				return true;
+			}
+			catch (Exception)
+			{
+				return false;
+			}
+		}
+
+
+
+		/// <summary>
+		/// "Variation seed strength: 0.17" to trackbar with multiplied value
+		/// </summary>
+		/// <param name="header">"Variation seed strength: "</param>
+		/// <param name="text">Variation seed strength: 0.17</param>
+		/// <param name="trackbar"></param>
+		/// <param name="multiply">if 100, value 0.17x100=17 set to trackbar</param>
+		/// <returns></returns>
+		bool SetOptionValue(string header, string text, TrackBar trackbar, int multiply = 1)
+		{
+			if (text.StartsWith(header) == false)
+				return false;
+			text = text.Substring(header.Length, text.Length - header.Length);
+
+			try
+			{
+				float value = float.Parse(text);
+				value *= multiply;
+				trackbar.Value = (int)value;
+				return true;
+			}
+			catch (Exception)
+			{
+				return false;
+			}
+		}
+
+
+
+		/// <summary>
+		/// "Size: 512x512" to two combobox
+		/// </summary>
+		/// <param name="header">"Size: "</param>
+		/// <param name="text">"Size: 512x512"</param>
+		bool SetOptionValue(string header, string text, ComboBox comboBox1, ComboBox comboBox2)
+		{
+			if (text.StartsWith(header) == false)
+				return false;
+			text = text.Substring(header.Length, text.Length - header.Length);
+			var data = text.Split('x');
+			if (data.Length != 2 || data[0].Length == 0 || data[1].Length == 0)
+				return false;
+
+			try
+			{
+				comboBox1.SelectedItem = data[0];
+				comboBox2.SelectedItem = data[1];
+				return true;
+			}
+			catch (Exception)
+			{
+				return false;
+			}
+		}
+
+
+
+
+
+
 	}
 }

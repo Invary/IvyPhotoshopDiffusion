@@ -60,6 +60,12 @@
 			this.trackBarBatchCount = new System.Windows.Forms.TrackBar();
 			this.pictureBoxNewVersionExists = new System.Windows.Forms.PictureBox();
 			this.textBoxLogWrite = new System.Windows.Forms.TextBox();
+			this.textBoxLayerName = new System.Windows.Forms.TextBox();
+			this.label9 = new System.Windows.Forms.Label();
+			this.label10 = new System.Windows.Forms.Label();
+			this.label11 = new System.Windows.Forms.Label();
+			this.numericUpDownSubseed = new System.Windows.Forms.NumericUpDown();
+			this.trackBarSubseedStrength100 = new System.Windows.Forms.TrackBar();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
 			this.label1 = new System.Windows.Forms.Label();
 			this.labelCfgScale100 = new System.Windows.Forms.Label();
@@ -77,14 +83,15 @@
 			this.buttonAbort = new System.Windows.Forms.Button();
 			this.buttonAbortForced = new System.Windows.Forms.Button();
 			this.buttonLogWrite = new System.Windows.Forms.Button();
-			this.textBoxLayerName = new System.Windows.Forms.TextBox();
-			this.label9 = new System.Windows.Forms.Label();
 			this.checkBoxRestoreFace = new System.Windows.Forms.CheckBox();
 			this.checkBoxTiling = new System.Windows.Forms.CheckBox();
 			this.numericUpDownENSD = new System.Windows.Forms.NumericUpDown();
-			this.label10 = new System.Windows.Forms.Label();
-			this.label11 = new System.Windows.Forms.Label();
 			this.numericUpDownClipSkip = new System.Windows.Forms.NumericUpDown();
+			this.labelSubseedStrength = new System.Windows.Forms.Label();
+			this.groupBox2 = new System.Windows.Forms.GroupBox();
+			this.buttonReadInfoText = new System.Windows.Forms.Button();
+			this.comboBoxSubseedH = new System.Windows.Forms.ComboBox();
+			this.comboBoxSubseedW = new System.Windows.Forms.ComboBox();
 			((System.ComponentModel.ISupportInitialize)(this.trackBarNoiseScale100)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.trackBarMaskBlur)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBoxMask)).BeginInit();
@@ -94,9 +101,12 @@
 			((System.ComponentModel.ISupportInitialize)(this.trackBarBatchSize)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.trackBarBatchCount)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBoxNewVersionExists)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.numericUpDownSubseed)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.trackBarSubseedStrength100)).BeginInit();
 			this.groupBox1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDownENSD)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDownClipSkip)).BeginInit();
+			this.groupBox2.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// buttonGenerate
@@ -370,7 +380,7 @@
 			// 
 			// numericUpDownSeed
 			// 
-			this.numericUpDownSeed.Location = new System.Drawing.Point(470, 407);
+			this.numericUpDownSeed.Location = new System.Drawing.Point(471, 391);
 			this.numericUpDownSeed.Maximum = new decimal(new int[] {
             -727379968,
             232,
@@ -395,7 +405,7 @@
 			// 
 			this.trackBarBatchSize.AutoSize = false;
 			this.trackBarBatchSize.LargeChange = 1;
-			this.trackBarBatchSize.Location = new System.Drawing.Point(245, 407);
+			this.trackBarBatchSize.Location = new System.Drawing.Point(245, 396);
 			this.trackBarBatchSize.Maximum = 48;
 			this.trackBarBatchSize.Minimum = 1;
 			this.trackBarBatchSize.Name = "trackBarBatchSize";
@@ -409,7 +419,7 @@
 			// 
 			this.trackBarBatchCount.AutoSize = false;
 			this.trackBarBatchCount.LargeChange = 1;
-			this.trackBarBatchCount.Location = new System.Drawing.Point(245, 380);
+			this.trackBarBatchCount.Location = new System.Drawing.Point(245, 369);
 			this.trackBarBatchCount.Maximum = 200;
 			this.trackBarBatchCount.Minimum = 1;
 			this.trackBarBatchCount.Name = "trackBarBatchCount";
@@ -423,7 +433,7 @@
 			// 
 			this.pictureBoxNewVersionExists.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.pictureBoxNewVersionExists.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxNewVersionExists.Image")));
-			this.pictureBoxNewVersionExists.Location = new System.Drawing.Point(664, 463);
+			this.pictureBoxNewVersionExists.Location = new System.Drawing.Point(731, 757);
 			this.pictureBoxNewVersionExists.Name = "pictureBoxNewVersionExists";
 			this.pictureBoxNewVersionExists.Size = new System.Drawing.Size(52, 50);
 			this.pictureBoxNewVersionExists.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -439,6 +449,79 @@
 			this.textBoxLogWrite.Size = new System.Drawing.Size(326, 19);
 			this.textBoxLogWrite.TabIndex = 46;
 			this.toolTip.SetToolTip(this.textBoxLogWrite, "Text message write to log file.\r\nthis is only for note.");
+			// 
+			// textBoxLayerName
+			// 
+			this.textBoxLayerName.Location = new System.Drawing.Point(318, 535);
+			this.textBoxLayerName.Name = "textBoxLayerName";
+			this.textBoxLayerName.Size = new System.Drawing.Size(403, 19);
+			this.textBoxLayerName.TabIndex = 48;
+			this.toolTip.SetToolTip(this.textBoxLayerName, resources.GetString("textBoxLayerName.ToolTip"));
+			// 
+			// label9
+			// 
+			this.label9.AutoSize = true;
+			this.label9.Location = new System.Drawing.Point(318, 517);
+			this.label9.Name = "label9";
+			this.label9.Size = new System.Drawing.Size(64, 12);
+			this.label9.TabIndex = 49;
+			this.label9.Text = "Layer name";
+			this.toolTip.SetToolTip(this.label9, resources.GetString("label9.ToolTip"));
+			// 
+			// label10
+			// 
+			this.label10.AutoSize = true;
+			this.label10.Location = new System.Drawing.Point(24, 445);
+			this.label10.Name = "label10";
+			this.label10.Size = new System.Drawing.Size(35, 12);
+			this.label10.TabIndex = 53;
+			this.label10.Text = "ENSD";
+			this.toolTip.SetToolTip(this.label10, "Eta noise seed delta\r\n\r\nderault: 1\r\nNovelAI\'s default: 31337");
+			// 
+			// label11
+			// 
+			this.label11.AutoSize = true;
+			this.label11.Location = new System.Drawing.Point(24, 420);
+			this.label11.Name = "label11";
+			this.label11.Size = new System.Drawing.Size(25, 12);
+			this.label11.TabIndex = 55;
+			this.label11.Text = "Clip";
+			this.toolTip.SetToolTip(this.label11, "Clip skip\r\n\r\ndefault: 1\r\nNovelAI\'s default: 2");
+			// 
+			// numericUpDownSubseed
+			// 
+			this.numericUpDownSubseed.Location = new System.Drawing.Point(20, 47);
+			this.numericUpDownSubseed.Maximum = new decimal(new int[] {
+            -727379968,
+            232,
+            0,
+            0});
+			this.numericUpDownSubseed.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            -2147483648});
+			this.numericUpDownSubseed.Name = "numericUpDownSubseed";
+			this.numericUpDownSubseed.Size = new System.Drawing.Size(120, 19);
+			this.numericUpDownSubseed.TabIndex = 56;
+			this.toolTip.SetToolTip(this.numericUpDownSubseed, "Subseed. -1 mean \'random seed\'. default value is -1");
+			this.numericUpDownSubseed.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            -2147483648});
+			// 
+			// trackBarSubseedStrength100
+			// 
+			this.trackBarSubseedStrength100.AutoSize = false;
+			this.trackBarSubseedStrength100.LargeChange = 1;
+			this.trackBarSubseedStrength100.Location = new System.Drawing.Point(20, 18);
+			this.trackBarSubseedStrength100.Maximum = 100;
+			this.trackBarSubseedStrength100.Name = "trackBarSubseedStrength100";
+			this.trackBarSubseedStrength100.Size = new System.Drawing.Size(208, 23);
+			this.trackBarSubseedStrength100.TabIndex = 58;
+			this.trackBarSubseedStrength100.TickStyle = System.Windows.Forms.TickStyle.None;
+			this.toolTip.SetToolTip(this.trackBarSubseedStrength100, "Subseed strength\r\ndefault: 0.  (means disable subseed)");
 			// 
 			// groupBox1
 			// 
@@ -520,7 +603,7 @@
 			// label6
 			// 
 			this.label6.AutoSize = true;
-			this.label6.Location = new System.Drawing.Point(433, 414);
+			this.label6.Location = new System.Drawing.Point(434, 398);
 			this.label6.Name = "label6";
 			this.label6.Size = new System.Drawing.Size(30, 12);
 			this.label6.TabIndex = 34;
@@ -541,7 +624,7 @@
 			// label7
 			// 
 			this.label7.AutoSize = true;
-			this.label7.Location = new System.Drawing.Point(178, 407);
+			this.label7.Location = new System.Drawing.Point(178, 396);
 			this.label7.Name = "label7";
 			this.label7.Size = new System.Drawing.Size(59, 12);
 			this.label7.TabIndex = 38;
@@ -550,7 +633,7 @@
 			// label8
 			// 
 			this.label8.AutoSize = true;
-			this.label8.Location = new System.Drawing.Point(178, 380);
+			this.label8.Location = new System.Drawing.Point(178, 369);
 			this.label8.Name = "label8";
 			this.label8.Size = new System.Drawing.Size(67, 12);
 			this.label8.TabIndex = 40;
@@ -559,7 +642,7 @@
 			// labelBatchSize
 			// 
 			this.labelBatchSize.AutoSize = true;
-			this.labelBatchSize.Location = new System.Drawing.Point(354, 407);
+			this.labelBatchSize.Location = new System.Drawing.Point(354, 396);
 			this.labelBatchSize.Name = "labelBatchSize";
 			this.labelBatchSize.Size = new System.Drawing.Size(35, 12);
 			this.labelBatchSize.TabIndex = 41;
@@ -568,7 +651,7 @@
 			// labelBatchCount
 			// 
 			this.labelBatchCount.AutoSize = true;
-			this.labelBatchCount.Location = new System.Drawing.Point(354, 380);
+			this.labelBatchCount.Location = new System.Drawing.Point(354, 369);
 			this.labelBatchCount.Name = "labelBatchCount";
 			this.labelBatchCount.Size = new System.Drawing.Size(35, 12);
 			this.labelBatchCount.TabIndex = 42;
@@ -604,24 +687,6 @@
 			this.buttonLogWrite.UseVisualStyleBackColor = true;
 			this.buttonLogWrite.Click += new System.EventHandler(this.buttonLogWrite_Click);
 			// 
-			// textBoxLayerName
-			// 
-			this.textBoxLayerName.Location = new System.Drawing.Point(318, 535);
-			this.textBoxLayerName.Name = "textBoxLayerName";
-			this.textBoxLayerName.Size = new System.Drawing.Size(403, 19);
-			this.textBoxLayerName.TabIndex = 48;
-			this.toolTip.SetToolTip(this.textBoxLayerName, resources.GetString("textBoxLayerName.ToolTip"));
-			// 
-			// label9
-			// 
-			this.label9.AutoSize = true;
-			this.label9.Location = new System.Drawing.Point(318, 517);
-			this.label9.Name = "label9";
-			this.label9.Size = new System.Drawing.Size(64, 12);
-			this.label9.TabIndex = 49;
-			this.label9.Text = "Layer name";
-			this.toolTip.SetToolTip(this.label9, resources.GetString("label9.ToolTip"));
-			// 
 			// checkBoxRestoreFace
 			// 
 			this.checkBoxRestoreFace.AutoSize = true;
@@ -654,26 +719,6 @@
 			this.numericUpDownENSD.Size = new System.Drawing.Size(85, 19);
 			this.numericUpDownENSD.TabIndex = 52;
 			// 
-			// label10
-			// 
-			this.label10.AutoSize = true;
-			this.label10.Location = new System.Drawing.Point(24, 445);
-			this.label10.Name = "label10";
-			this.label10.Size = new System.Drawing.Size(35, 12);
-			this.label10.TabIndex = 53;
-			this.label10.Text = "ENSD";
-			this.toolTip.SetToolTip(this.label10, "Eta noise seed delta\r\n\r\nderault: 1\r\nNovelAI\'s default: 31337");
-			// 
-			// label11
-			// 
-			this.label11.AutoSize = true;
-			this.label11.Location = new System.Drawing.Point(24, 420);
-			this.label11.Name = "label11";
-			this.label11.Size = new System.Drawing.Size(25, 12);
-			this.label11.TabIndex = 55;
-			this.label11.Text = "Clip";
-			this.toolTip.SetToolTip(this.label11, "Clip skip\r\n\r\ndefault: 1\r\nNovelAI\'s default: 2");
-			// 
 			// numericUpDownClipSkip
 			// 
 			this.numericUpDownClipSkip.Location = new System.Drawing.Point(65, 416);
@@ -696,11 +741,69 @@
             0,
             0});
 			// 
+			// labelSubseedStrength
+			// 
+			this.labelSubseedStrength.AutoSize = true;
+			this.labelSubseedStrength.Location = new System.Drawing.Point(234, 25);
+			this.labelSubseedStrength.Name = "labelSubseedStrength";
+			this.labelSubseedStrength.Size = new System.Drawing.Size(35, 12);
+			this.labelSubseedStrength.TabIndex = 59;
+			this.labelSubseedStrength.Text = "label1";
+			// 
+			// groupBox2
+			// 
+			this.groupBox2.Controls.Add(this.comboBoxSubseedH);
+			this.groupBox2.Controls.Add(this.trackBarSubseedStrength100);
+			this.groupBox2.Controls.Add(this.comboBoxSubseedW);
+			this.groupBox2.Controls.Add(this.labelSubseedStrength);
+			this.groupBox2.Controls.Add(this.numericUpDownSubseed);
+			this.groupBox2.Location = new System.Drawing.Point(180, 429);
+			this.groupBox2.Name = "groupBox2";
+			this.groupBox2.Size = new System.Drawing.Size(309, 85);
+			this.groupBox2.TabIndex = 62;
+			this.groupBox2.TabStop = false;
+			this.groupBox2.Text = "Variation (extra)";
+			// 
+			// buttonReadInfoText
+			// 
+			this.buttonReadInfoText.Location = new System.Drawing.Point(436, 9);
+			this.buttonReadInfoText.Name = "buttonReadInfoText";
+			this.buttonReadInfoText.Size = new System.Drawing.Size(37, 23);
+			this.buttonReadInfoText.TabIndex = 63;
+			this.buttonReadInfoText.Text = "/";
+			this.toolTip.SetToolTip(this.buttonReadInfoText, "Import automatic1111 infotext from prompt input box\r\n\r\ninfotext is such as\r\nphoto" +
+        " of a girl\r\nNegative prompt: bad anatomy\r\nSteps: 20, Sampler: Euler a, CFG scale" +
+        ": 7, Seed: 1574434520, Size: 512x512");
+			this.buttonReadInfoText.UseVisualStyleBackColor = true;
+			this.buttonReadInfoText.Click += new System.EventHandler(this.buttonReadInfoText_Click);
+			// 
+			// comboBoxSubseedH
+			// 
+			this.comboBoxSubseedH.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.comboBoxSubseedH.FormattingEnabled = true;
+			this.comboBoxSubseedH.Location = new System.Drawing.Point(223, 46);
+			this.comboBoxSubseedH.Name = "comboBoxSubseedH";
+			this.comboBoxSubseedH.Size = new System.Drawing.Size(47, 20);
+			this.comboBoxSubseedH.TabIndex = 65;
+			this.toolTip.SetToolTip(this.comboBoxSubseedH, "Seed resize from H");
+			// 
+			// comboBoxSubseedW
+			// 
+			this.comboBoxSubseedW.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.comboBoxSubseedW.FormattingEnabled = true;
+			this.comboBoxSubseedW.Location = new System.Drawing.Point(162, 46);
+			this.comboBoxSubseedW.Name = "comboBoxSubseedW";
+			this.comboBoxSubseedW.Size = new System.Drawing.Size(47, 20);
+			this.comboBoxSubseedW.TabIndex = 64;
+			this.toolTip.SetToolTip(this.comboBoxSubseedW, "Seed resize from W");
+			// 
 			// FormMain
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(794, 871);
+			this.Controls.Add(this.buttonReadInfoText);
+			this.Controls.Add(this.groupBox2);
 			this.Controls.Add(this.label11);
 			this.Controls.Add(this.numericUpDownClipSkip);
 			this.Controls.Add(this.label10);
@@ -761,9 +864,13 @@
 			((System.ComponentModel.ISupportInitialize)(this.trackBarBatchSize)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.trackBarBatchCount)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBoxNewVersionExists)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.numericUpDownSubseed)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.trackBarSubseedStrength100)).EndInit();
 			this.groupBox1.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDownENSD)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDownClipSkip)).EndInit();
+			this.groupBox2.ResumeLayout(false);
+			this.groupBox2.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -826,6 +933,13 @@
 		private System.Windows.Forms.Label label10;
 		private System.Windows.Forms.Label label11;
 		private System.Windows.Forms.NumericUpDown numericUpDownClipSkip;
+		private System.Windows.Forms.NumericUpDown numericUpDownSubseed;
+		private System.Windows.Forms.Label labelSubseedStrength;
+		private System.Windows.Forms.TrackBar trackBarSubseedStrength100;
+		private System.Windows.Forms.GroupBox groupBox2;
+		private System.Windows.Forms.Button buttonReadInfoText;
+		private System.Windows.Forms.ComboBox comboBoxSubseedH;
+		private System.Windows.Forms.ComboBox comboBoxSubseedW;
 	}
 }
 

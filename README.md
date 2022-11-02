@@ -6,7 +6,7 @@ Recently, Automatic1111 changes its API specifications every few days. <br />
 As a result, there are times when an error occurs and the IvyPhotoshopDiffusion does not work. <br />
 In this case, please use the version of Automatic1111 that is a few days old. <br />
 
-Ver105 works on latest version of Automatic1111 (2022/11/02 22:00 UTC)<br />
+Ver106 works on latest version of Automatic1111 (2022/11/02 23:00 UTC)<br />
 
 <br />
 
@@ -82,6 +82,12 @@ see [Documents](https://github.com/Invary/IvyPhotoshopDiffusion/tree/main/doc) p
 <br />
 
 ##  Changelog
+
+- Ver106 <br />
+Support variation<br />
+Add import automatic1111's infotext button<br />
+Ver106 work for Automatic1111 2022/11/02 23:00 UTC version<br />
+https://github.com/AUTOMATIC1111/stable-diffusion-webui/commit/d98eacea40c7a40227f36dbea9cf92f90489310b
 
 - Ver105 <br />
 Support restore faces, tiling, ENSD, clip skip<br />
