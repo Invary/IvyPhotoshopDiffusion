@@ -6,7 +6,7 @@ Recently, Automatic1111 changes its API specifications every few days. <br />
 As a result, there are times when an error occurs and the IvyPhotoshopDiffusion does not work. <br />
 In this case, please use the version of Automatic1111 that is a few days old. <br />
 
-Ver105 works on latest version of Automatic1111 (2022/11/02 15:00 UTC)<br />
+Ver105 works on latest version of Automatic1111 (2022/11/02 20:00 UTC)<br />
 
 <br />
 
