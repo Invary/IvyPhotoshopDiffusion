@@ -2,7 +2,7 @@
 
 
 ## Attention
-Recently, Automatic1111 has been changing its API specification per every few days. <br />
+Recently, Automatic1111 changes its API specifications every few days. <br />
 As a result, there are times when an error occurs and the IvyPhotoshopDiffusion does not work. <br />
 In this case, please use the version of Automatic1111 that is a few days old. <br />
 
