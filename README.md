@@ -83,6 +83,12 @@ see [Documents](https://github.com/Invary/IvyPhotoshopDiffusion/tree/main/doc) p
 
 ##  Changelog
 
+- Ver107 <br />
+Support wildcards <br />
+Add import NovelAI prompt button <br />
+Ver107 work for Automatic1111 2022/11/03 21:00 UTC version<br />
+https://github.com/AUTOMATIC1111/stable-diffusion-webui/tree/c2465f67db2529d962e311b3a520bd5cd715058b
+
 - Ver106 <br />
 Support variation<br />
 Add import automatic1111's infotext button<br />

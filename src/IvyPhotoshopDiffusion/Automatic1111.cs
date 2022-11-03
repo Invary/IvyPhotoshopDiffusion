@@ -36,18 +36,52 @@ namespace Invary.IvyPhotoshopDiffusion
 	{
 
 
+
+
+		/// <summary>
+		/// Send to automatic1111, with wildcards converter
+		/// </summary>
 		public static JsonResponseBase Send(JsonRequestBase request)
 		{
-			if (request.GetType() == typeof(JsonRequestImg2Img))
-			{
-				var reqImg2Img = request as JsonRequestImg2Img;
-				return SendImg2Img(reqImg2Img);
-			}
+			string orgPrompt = request.prompt;
+			string orgNegative = request.negative_prompt;
 
-			if (request.GetType() == typeof(JsonRequestTxt2Img))
+			try
 			{
-				var reqTxt2Img = request as JsonRequestTxt2Img;
-				return SendTxt2Img(reqTxt2Img);
+				//wildcards convert
+				{
+					request.negative_prompt = Wildcards.Convert(request.negative_prompt);
+					if (orgNegative != request.negative_prompt)
+					{
+						LogMessage.WriteLine($"Original negative prompt: {orgNegative}");
+						LogMessage.WriteLine("Wildcards: negative prompt converted");
+					}
+
+					request.prompt = Wildcards.Convert(request.prompt);
+					if (orgPrompt != request.prompt)
+					{
+						LogMessage.WriteLine($"Original prompt: {orgPrompt}");
+						LogMessage.WriteLine("Wildcards: prompt converted");
+					}
+				}
+
+
+				if (request.GetType() == typeof(JsonRequestImg2Img))
+				{
+					var reqImg2Img = request as JsonRequestImg2Img;
+					return SendImg2Img(reqImg2Img);
+				}
+
+				if (request.GetType() == typeof(JsonRequestTxt2Img))
+				{
+					var reqTxt2Img = request as JsonRequestTxt2Img;
+					return SendTxt2Img(reqTxt2Img);
+				}
+			}
+			finally
+			{
+				request.prompt = orgPrompt;
+				request.negative_prompt = orgNegative;
 			}
 
 			return null;

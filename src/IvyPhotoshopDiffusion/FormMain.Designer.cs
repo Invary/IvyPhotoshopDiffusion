@@ -66,6 +66,9 @@
 			this.label11 = new System.Windows.Forms.Label();
 			this.numericUpDownSubseed = new System.Windows.Forms.NumericUpDown();
 			this.trackBarSubseedStrength100 = new System.Windows.Forms.TrackBar();
+			this.buttonReadInfoText = new System.Windows.Forms.Button();
+			this.comboBoxSubseedH = new System.Windows.Forms.ComboBox();
+			this.comboBoxSubseedW = new System.Windows.Forms.ComboBox();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
 			this.label1 = new System.Windows.Forms.Label();
 			this.labelCfgScale100 = new System.Windows.Forms.Label();
@@ -89,9 +92,7 @@
 			this.numericUpDownClipSkip = new System.Windows.Forms.NumericUpDown();
 			this.labelSubseedStrength = new System.Windows.Forms.Label();
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
-			this.buttonReadInfoText = new System.Windows.Forms.Button();
-			this.comboBoxSubseedH = new System.Windows.Forms.ComboBox();
-			this.comboBoxSubseedW = new System.Windows.Forms.ComboBox();
+			this.buttonNovelAIto1111Conv = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.trackBarNoiseScale100)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.trackBarMaskBlur)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBoxMask)).BeginInit();
@@ -523,6 +524,39 @@
 			this.trackBarSubseedStrength100.TickStyle = System.Windows.Forms.TickStyle.None;
 			this.toolTip.SetToolTip(this.trackBarSubseedStrength100, "Subseed strength\r\ndefault: 0.  (means disable subseed)");
 			// 
+			// buttonReadInfoText
+			// 
+			this.buttonReadInfoText.Location = new System.Drawing.Point(436, 9);
+			this.buttonReadInfoText.Name = "buttonReadInfoText";
+			this.buttonReadInfoText.Size = new System.Drawing.Size(37, 23);
+			this.buttonReadInfoText.TabIndex = 63;
+			this.buttonReadInfoText.Text = "/";
+			this.toolTip.SetToolTip(this.buttonReadInfoText, "Import automatic1111 infotext from prompt input box\r\n\r\ninfotext is such as\r\nphoto" +
+        " of a girl\r\nNegative prompt: bad anatomy\r\nSteps: 20, Sampler: Euler a, CFG scale" +
+        ": 7, Seed: 1574434520, Size: 512x512");
+			this.buttonReadInfoText.UseVisualStyleBackColor = true;
+			this.buttonReadInfoText.Click += new System.EventHandler(this.buttonReadInfoText_Click);
+			// 
+			// comboBoxSubseedH
+			// 
+			this.comboBoxSubseedH.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.comboBoxSubseedH.FormattingEnabled = true;
+			this.comboBoxSubseedH.Location = new System.Drawing.Point(223, 46);
+			this.comboBoxSubseedH.Name = "comboBoxSubseedH";
+			this.comboBoxSubseedH.Size = new System.Drawing.Size(47, 20);
+			this.comboBoxSubseedH.TabIndex = 65;
+			this.toolTip.SetToolTip(this.comboBoxSubseedH, "Seed resize from H");
+			// 
+			// comboBoxSubseedW
+			// 
+			this.comboBoxSubseedW.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.comboBoxSubseedW.FormattingEnabled = true;
+			this.comboBoxSubseedW.Location = new System.Drawing.Point(162, 46);
+			this.comboBoxSubseedW.Name = "comboBoxSubseedW";
+			this.comboBoxSubseedW.Size = new System.Drawing.Size(47, 20);
+			this.comboBoxSubseedW.TabIndex = 64;
+			this.toolTip.SetToolTip(this.comboBoxSubseedW, "Seed resize from W");
+			// 
 			// groupBox1
 			// 
 			this.groupBox1.Controls.Add(this.comboBoxHeight);
@@ -764,44 +798,24 @@
 			this.groupBox2.TabStop = false;
 			this.groupBox2.Text = "Variation (extra)";
 			// 
-			// buttonReadInfoText
+			// buttonNovelAIto1111Conv
 			// 
-			this.buttonReadInfoText.Location = new System.Drawing.Point(436, 9);
-			this.buttonReadInfoText.Name = "buttonReadInfoText";
-			this.buttonReadInfoText.Size = new System.Drawing.Size(37, 23);
-			this.buttonReadInfoText.TabIndex = 63;
-			this.buttonReadInfoText.Text = "/";
-			this.toolTip.SetToolTip(this.buttonReadInfoText, "Import automatic1111 infotext from prompt input box\r\n\r\ninfotext is such as\r\nphoto" +
-        " of a girl\r\nNegative prompt: bad anatomy\r\nSteps: 20, Sampler: Euler a, CFG scale" +
-        ": 7, Seed: 1574434520, Size: 512x512");
-			this.buttonReadInfoText.UseVisualStyleBackColor = true;
-			this.buttonReadInfoText.Click += new System.EventHandler(this.buttonReadInfoText_Click);
-			// 
-			// comboBoxSubseedH
-			// 
-			this.comboBoxSubseedH.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.comboBoxSubseedH.FormattingEnabled = true;
-			this.comboBoxSubseedH.Location = new System.Drawing.Point(223, 46);
-			this.comboBoxSubseedH.Name = "comboBoxSubseedH";
-			this.comboBoxSubseedH.Size = new System.Drawing.Size(47, 20);
-			this.comboBoxSubseedH.TabIndex = 65;
-			this.toolTip.SetToolTip(this.comboBoxSubseedH, "Seed resize from H");
-			// 
-			// comboBoxSubseedW
-			// 
-			this.comboBoxSubseedW.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.comboBoxSubseedW.FormattingEnabled = true;
-			this.comboBoxSubseedW.Location = new System.Drawing.Point(162, 46);
-			this.comboBoxSubseedW.Name = "comboBoxSubseedW";
-			this.comboBoxSubseedW.Size = new System.Drawing.Size(47, 20);
-			this.comboBoxSubseedW.TabIndex = 64;
-			this.toolTip.SetToolTip(this.comboBoxSubseedW, "Seed resize from W");
+			this.buttonNovelAIto1111Conv.Location = new System.Drawing.Point(371, 9);
+			this.buttonNovelAIto1111Conv.Name = "buttonNovelAIto1111Conv";
+			this.buttonNovelAIto1111Conv.Size = new System.Drawing.Size(37, 23);
+			this.buttonNovelAIto1111Conv.TabIndex = 64;
+			this.buttonNovelAIto1111Conv.Text = "N";
+			this.toolTip.SetToolTip(this.buttonNovelAIto1111Conv, "Convert NovelAI prompt to Automatic1111 prompt\r\n\r\nex.\r\n{{xxx}}, [yyy]\r\nto\r\n(xxx:1" +
+        ".1025), (yyy:0.9524)");
+			this.buttonNovelAIto1111Conv.UseVisualStyleBackColor = true;
+			this.buttonNovelAIto1111Conv.Click += new System.EventHandler(this.buttonNovelAIto1111Conv_Click);
 			// 
 			// FormMain
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(794, 871);
+			this.Controls.Add(this.buttonNovelAIto1111Conv);
 			this.Controls.Add(this.buttonReadInfoText);
 			this.Controls.Add(this.groupBox2);
 			this.Controls.Add(this.label11);
@@ -940,6 +954,7 @@
 		private System.Windows.Forms.Button buttonReadInfoText;
 		private System.Windows.Forms.ComboBox comboBoxSubseedH;
 		private System.Windows.Forms.ComboBox comboBoxSubseedW;
+		private System.Windows.Forms.Button buttonNovelAIto1111Conv;
 	}
 }
 

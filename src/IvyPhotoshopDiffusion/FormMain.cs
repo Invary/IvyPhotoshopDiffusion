@@ -26,7 +26,7 @@ namespace Invary.IvyPhotoshopDiffusion
 	//TODO: save last setting
 	//TODO: dupe exec check?
 
-	//TODO: NAI prompt conv
+	//TODO; Dynamic Prompts
 	//TODO: NAI infotext import
 	//TODO: ctrl+↑↓ at prompt inputing
 
@@ -54,7 +54,6 @@ namespace Invary.IvyPhotoshopDiffusion
 
 			Text = $"IvyPhotoshopDiffusion {XmlSetting.strVersion}";
 			LogMessage.WriteLine($"IvyPhotoshopDiffusion {XmlSetting.strVersion}");
-
 
 
 			textBoxPrompt.Text = XmlSetting.Current.LastPrompt;
@@ -1100,10 +1099,9 @@ namespace Invary.IvyPhotoshopDiffusion
 			}
 		}
 
-
-
-
-
-
+		private void buttonNovelAIto1111Conv_Click(object sender, EventArgs e)
+		{
+			textBoxPrompt.Text = NovelAI.ConvertNAIto1111(textBoxPrompt.Text);
+		}
 	}
 }

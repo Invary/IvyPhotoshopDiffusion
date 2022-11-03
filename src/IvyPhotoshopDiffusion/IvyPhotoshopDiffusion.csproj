@@ -90,6 +90,7 @@
       <DependentUpon>FormSetting.cs</DependentUpon>
     </Compile>
     <Compile Include="LogMessage.cs" />
+    <Compile Include="NovelAI.cs" />
     <Compile Include="Photoshop.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -99,6 +100,7 @@
     <Compile Include="Utility\CheckDupeExecute.cs" />
     <Compile Include="Utility\ClipboardUty.cs" />
     <Compile Include="Utility\Uty.cs" />
+    <Compile Include="Wildcards.cs" />
     <Compile Include="XmlRecent.cs" />
     <Compile Include="XmlSetting.cs" />
     <EmbeddedResource Include="FormMain.resx">
