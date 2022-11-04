@@ -20,7 +20,7 @@ namespace Invary.IvyPhotoshopDiffusion
 
 
 		[XmlIgnore]
-		public static int nVersion { get; } = 107;
+		public static int nVersion { get; } = 108;
 
 		[XmlIgnore]
 		public static string strVersion { get; } = $"Ver{nVersion}";
@@ -61,6 +61,14 @@ namespace Invary.IvyPhotoshopDiffusion
 
 		public int LastClipSkip { set; get; } = 1;
 		public int LastENSD { set; get; } = 0;
+
+
+
+		public bool IsEnableWildcards { set; get; } = true;
+		public bool IsEnableDynamicPrompts { set; get; } = true;
+
+
+
 
 
 

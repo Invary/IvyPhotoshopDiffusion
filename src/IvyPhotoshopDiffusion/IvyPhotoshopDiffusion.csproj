@@ -143,6 +143,11 @@
     <EmbeddedResource Include="image\stop.png" />
     <EmbeddedResource Include="image\unknown.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="wildcards\_readme_for_wildcards.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Text.Json.6.0.6\build\System.Text.Json.targets" Condition="Exists('..\packages\System.Text.Json.6.0.6\build\System.Text.Json.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -83,6 +83,12 @@ see [Documents](https://github.com/Invary/IvyPhotoshopDiffusion/tree/main/doc) p
 
 ##  Changelog
 
+- Ver108 <br />
+Support dynamic prompts <br />
+Add option enable/disable wildcards and dynamic prompts <br />
+Ver108 work for Automatic1111 2022/11/04 10:00 UTC version<br />
+https://github.com/AUTOMATIC1111/stable-diffusion-webui/tree/81973091bc07c706d056809d89221bafcd01b38a
+
 - Ver107 <br />
 Support wildcards <br />
 Add import NovelAI prompt button <br />

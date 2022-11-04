@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSetting));
 			this.buttonOK = new System.Windows.Forms.Button();
 			this.buttonCancel = new System.Windows.Forms.Button();
@@ -49,6 +50,9 @@
 			this.linkLabelProjectURL = new System.Windows.Forms.LinkLabel();
 			this.labelVersion = new System.Windows.Forms.Label();
 			this.checkBoxSaveLogFile = new System.Windows.Forms.CheckBox();
+			this.checkBoxEnableWildcards = new System.Windows.Forms.CheckBox();
+			this.checkBoxEnableDynamicPrompts = new System.Windows.Forms.CheckBox();
+			this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
 			this.groupBox1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBoxDonationQR2)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBoxDonationQR1)).BeginInit();
@@ -95,7 +99,7 @@
 			// checkBoxCheckUpdate
 			// 
 			this.checkBoxCheckUpdate.AutoSize = true;
-			this.checkBoxCheckUpdate.Location = new System.Drawing.Point(26, 145);
+			this.checkBoxCheckUpdate.Location = new System.Drawing.Point(26, 248);
 			this.checkBoxCheckUpdate.Name = "checkBoxCheckUpdate";
 			this.checkBoxCheckUpdate.Size = new System.Drawing.Size(94, 16);
 			this.checkBoxCheckUpdate.TabIndex = 4;
@@ -273,12 +277,35 @@
 			// checkBoxSaveLogFile
 			// 
 			this.checkBoxSaveLogFile.AutoSize = true;
-			this.checkBoxSaveLogFile.Location = new System.Drawing.Point(26, 183);
+			this.checkBoxSaveLogFile.Location = new System.Drawing.Point(26, 275);
 			this.checkBoxSaveLogFile.Name = "checkBoxSaveLogFile";
 			this.checkBoxSaveLogFile.Size = new System.Drawing.Size(88, 16);
 			this.checkBoxSaveLogFile.TabIndex = 8;
 			this.checkBoxSaveLogFile.Text = "Save log file";
 			this.checkBoxSaveLogFile.UseVisualStyleBackColor = true;
+			// 
+			// checkBoxEnableWildcards
+			// 
+			this.checkBoxEnableWildcards.AutoSize = true;
+			this.checkBoxEnableWildcards.Location = new System.Drawing.Point(26, 159);
+			this.checkBoxEnableWildcards.Name = "checkBoxEnableWildcards";
+			this.checkBoxEnableWildcards.Size = new System.Drawing.Size(110, 16);
+			this.checkBoxEnableWildcards.TabIndex = 9;
+			this.checkBoxEnableWildcards.Text = "Enable wildcards";
+			this.toolTip1.SetToolTip(this.checkBoxEnableWildcards, "Wildcards is converter of prompts.\r\nIf the prompt include \'__color__\', replace it" +
+        " with a random line in the \'wildcards/color.txt\' file.");
+			this.checkBoxEnableWildcards.UseVisualStyleBackColor = true;
+			// 
+			// checkBoxEnableDynamicPrompts
+			// 
+			this.checkBoxEnableDynamicPrompts.AutoSize = true;
+			this.checkBoxEnableDynamicPrompts.Location = new System.Drawing.Point(26, 181);
+			this.checkBoxEnableDynamicPrompts.Name = "checkBoxEnableDynamicPrompts";
+			this.checkBoxEnableDynamicPrompts.Size = new System.Drawing.Size(149, 16);
+			this.checkBoxEnableDynamicPrompts.TabIndex = 10;
+			this.checkBoxEnableDynamicPrompts.Text = "Enable dynamic prompts";
+			this.toolTip1.SetToolTip(this.checkBoxEnableDynamicPrompts, resources.GetString("checkBoxEnableDynamicPrompts.ToolTip"));
+			this.checkBoxEnableDynamicPrompts.UseVisualStyleBackColor = true;
 			// 
 			// FormSetting
 			// 
@@ -287,6 +314,8 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.CancelButton = this.buttonCancel;
 			this.ClientSize = new System.Drawing.Size(648, 450);
+			this.Controls.Add(this.checkBoxEnableDynamicPrompts);
+			this.Controls.Add(this.checkBoxEnableWildcards);
 			this.Controls.Add(this.checkBoxSaveLogFile);
 			this.Controls.Add(this.labelVersion);
 			this.Controls.Add(this.linkLabelProjectURL);
@@ -332,5 +361,8 @@
 		private System.Windows.Forms.LinkLabel linkLabelProjectURL;
 		private System.Windows.Forms.Label labelVersion;
 		private System.Windows.Forms.CheckBox checkBoxSaveLogFile;
+		private System.Windows.Forms.CheckBox checkBoxEnableWildcards;
+		private System.Windows.Forms.CheckBox checkBoxEnableDynamicPrompts;
+		private System.Windows.Forms.ToolTip toolTip1;
 	}
 }

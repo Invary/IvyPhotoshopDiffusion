@@ -121,7 +121,7 @@
   <data name="pictureBoxDonationQR2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAKUAAACmCAIAAAA03dgjAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wAAADsABataJCQAAD/hJREFUeF7t0VFu68gOANG3/03Py8cpoCdzCdOKnGsgOZ/VZEuy//fPr5/k9//+
+        vwAADr8BOAVTJAAAD/hJREFUeF7t0VFu68gOANG3/03Py8cpoCdzCdOKnGsgOZ/VZEuy//fPr5/k9//+
         WX7/75/l9//+WX7/75/l9//+WX7/75/l9//+WT7/3//7Rh45Mxd1YCjqzFzUHTszc1G/hUcO3vfNPpiL
         OjAUdWYu6o6dmbmo38IjB+/7Zh/MRR0YijozF3XHzsxc1G/hkYP3fbMP5qIODEWdmYu6Y2dmLuq38MjB
         +77ZB3NRB4aizsxF3bEzMxf1W3jk4MGbqTdxadQ1a5e44uAgatSoUWfmoka9iUujDt73zf7L2iWuODiI
@@ -333,7 +333,7 @@
   <data name="pictureBoxDonationKofi.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAfQAAABOCAYAAADW8OQtAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EAAACxABrSO9dQAALP9JREFUeF7tnQ2sHUd1x60UoSpFTbEERCgqkhUhlKIKiCgBKiuUxlGKFUxiHMe4
+        DwAACw8BkvkDpQAALP9JREFUeF7tnQ2sHUd1x60UoSpFTbEERCgqkhUhlKIKiCgBKiuUxlGKFUxiHMe4
         gRCLhggaJ3JNwkckXFpkAeUrKEVtFJHQRi2ECCV8NVSRiSgFi4KAkqZuakggAiUojqwQxa61nd/s/tfn
         njd7796Pd9999jnS/+3e3ZkzM2dmzn9mdnbfmvN3bhzAXW/afYrOv7r+DWf++x9vvf7YJdfcV11yzaFq
         67VVIBAIBAKBOSFx75E3Xv3jhzfu+NjXz734HMvRHgM/FPDml5/3osc2XfmZpOxItW1XOZFAIBAIBAJz
@@ -527,5 +527,15 @@
         08vKA4FAIBAIzAP5f51cl488Iv/6uRefI/4WBn6I1AHTeB60M2PnhfWkMJbhA4FAIBCYL47wnJxH4hA5
         m9jF1Zazz9+5cc3/A5LOCD1h+EJMAAAAAElFTkSuQmCC
 </value>
+  </data>
+  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="checkBoxEnableDynamicPrompts.ToolTip" xml:space="preserve">
+    <value>Dynamic prompts is converter of prompts.
+
+If the prompt is {black|white|red|green}, replace with one of black/white/red/green.
+If {2$$black|white|red|green}, replace with two,
+If {1-2$$black|white|red|green}, replace with one or two.</value>
   </data>
 </root>

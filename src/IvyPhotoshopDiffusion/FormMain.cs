@@ -8,6 +8,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -26,7 +27,7 @@ namespace Invary.IvyPhotoshopDiffusion
 	//TODO: save last setting
 	//TODO: dupe exec check?
 
-	//TODO; Dynamic Prompts
+	//TODO: read png metadata
 	//TODO: NAI infotext import
 	//TODO: ctrl+↑↓ at prompt inputing
 
@@ -54,6 +55,7 @@ namespace Invary.IvyPhotoshopDiffusion
 
 			Text = $"IvyPhotoshopDiffusion {XmlSetting.strVersion}";
 			LogMessage.WriteLine($"IvyPhotoshopDiffusion {XmlSetting.strVersion}");
+
 
 
 			textBoxPrompt.Text = XmlSetting.Current.LastPrompt;

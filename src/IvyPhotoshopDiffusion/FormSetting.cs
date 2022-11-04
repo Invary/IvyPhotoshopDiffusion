@@ -23,6 +23,9 @@ namespace Invary.IvyPhotoshopDiffusion
 
 			checkBoxSaveLogFile.Checked = XmlSetting.Current.IsSaveLogFile;
 
+			checkBoxEnableWildcards.Checked = XmlSetting.Current.IsEnableWildcards;
+			checkBoxEnableDynamicPrompts.Checked = XmlSetting.Current.IsEnableDynamicPrompts;
+
 
 
 			labelVersion.Text = $"IvyPhotoshopDiffusion {XmlSetting.strVersion}";
@@ -74,6 +77,8 @@ namespace Invary.IvyPhotoshopDiffusion
 			XmlSetting.Current.IsCheckAutoUpdate = checkBoxCheckUpdate.Checked;
 			XmlSetting.Current.IsSaveLogFile = checkBoxSaveLogFile.Checked;
 
+			XmlSetting.Current.IsEnableWildcards = checkBoxEnableWildcards.Checked;
+			XmlSetting.Current.IsEnableDynamicPrompts = checkBoxEnableDynamicPrompts.Checked;
 
 
 
