@@ -3,12 +3,15 @@
 
 <br />
 
-## Windows protect your PC
+## Cannot execute with 'Windows protect your PC'
 
 If such a message appears at runtime after installation, it must be unlocked. <br />
 Right-click on the executable file, select "Properties," and "Unlock". <br />
 
 <img src="https://raw.githubusercontent.com/Invary/IvyPhotoshopDiffusion/main/doc/res/doc05_locked.png" width="300" />
+
+https://user-images.githubusercontent.com/99020933/200096259-66955997-5dbf-4a8b-abbc-c753be995e5f.mp4
+
 
 <br />
 
