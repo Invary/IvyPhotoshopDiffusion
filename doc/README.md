@@ -3,6 +3,16 @@
 
 <br />
 
+## Windows protect your PC
+
+If such a message appears at runtime after installation, it must be unlocked. <br />
+Right-click on the executable file, select "Properties," and "Unlock". <br />
+
+<img src="https://raw.githubusercontent.com/Invary/IvyPhotoshopDiffusion/main/doc/res/doc05_locked.png" width="300" />
+
+<br />
+
+
 ## Background color in photoshop
 
 Transparent background cannot use. <br />

@@ -166,6 +166,32 @@ namespace Invary.IvyPhotoshopDiffusion
 
 
 
+
+
+
+
+		public static JsonResponseProgress SendGetProgress()
+		{
+			var url = $"{XmlSetting.Current.Automatic1111ApiUrl}/sdapi/v1/progress";
+
+			var request = WebRequest.Create(url);
+			request.Method = "GET";
+
+			using (var response = request.GetResponse())
+			{
+				using (var respStream = response.GetResponseStream())
+				using (var reader = new StreamReader(respStream))
+				{
+					string jsonresponse = reader.ReadToEnd();
+
+					return JsonSerializer.Deserialize<JsonResponseProgress>(jsonresponse);
+				}
+			}
+		}
+
+
+
+
 		//extra check code
 		//{
 		//	JsonRequestExtra objJson = new JsonRequestExtra();
@@ -538,6 +564,25 @@ namespace Invary.IvyPhotoshopDiffusion
 
 
 
+
+	public class JsonResponseProgress
+	{
+		public float progress { get; set; }
+		public float eta_relative { get; set; }
+		public JsonResponseProgressState state { get; set; }
+		//public object current_image { get; set; }
+	}
+
+	public class JsonResponseProgressState
+	{
+		public bool skipped { get; set; }
+		public bool interrupted { get; set; }
+		public string job { get; set; }
+		public int job_count { get; set; }
+		public int job_no { get; set; }
+		public int sampling_step { get; set; }
+		public int sampling_steps { get; set; }
+	}
 
 
 

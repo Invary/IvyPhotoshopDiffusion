@@ -202,6 +202,13 @@ namespace Invary.IvyPhotoshopDiffusion
 			buttonAbort.Enabled = false;
 			buttonAbortForced.Enabled = false;
 
+			toolStripProgressBar1.Visible = false;
+			toolStripProgressBar1.Step = 1;
+			toolStripProgressBar1.Minimum = 0;
+			toolStripProgressBar1.Maximum = 100;
+
+			toolStripStatusLabel.Text = "";
+
 
 
 			//transparent color button, set right click menu
@@ -332,6 +339,7 @@ namespace Invary.IvyPhotoshopDiffusion
 				buttonAbortForced.Enabled = true;
 
 				LogMessage.WriteLine("start generate...");
+				StartProgress();
 
 				int width = int.Parse((string)comboBoxWidth.SelectedItem);
 				int height = int.Parse((string)comboBoxHeight.SelectedItem);
@@ -501,6 +509,17 @@ namespace Invary.IvyPhotoshopDiffusion
 							if (_bAbort)
 								return;
 
+							try
+							{
+								Invoke((MethodInvoker)delegate
+								{
+									toolStripStatusLabel.Text = $"batch: {i + 1}/{nBatchCount}";
+								});
+							}
+							catch(Exception)
+							{
+							}
+
 							if (i > 0)
 								request.seed += request.batch_size;
 							if (nBatchCount > 1)
@@ -579,6 +598,8 @@ namespace Invary.IvyPhotoshopDiffusion
 					}
 					finally
 					{
+						_bAbortProgress = true;
+
 						if (_bAbort)
 						{
 							LogMessage.WriteLine("abort: generate aborted");
@@ -1105,5 +1126,64 @@ namespace Invary.IvyPhotoshopDiffusion
 		{
 			textBoxPrompt.Text = NovelAI.ConvertNAIto1111(textBoxPrompt.Text);
 		}
+
+
+
+		bool _bProgress = false;
+		bool _bAbortProgress = false;
+
+
+		void StartProgress()
+		{
+			if (_bProgress)
+				return;
+			_bProgress = true;
+			_bAbortProgress = false;
+			toolStripProgressBar1.Value = 0;
+			toolStripProgressBar1.Visible = true;
+			toolStripStatusLabel.Text = "";
+
+			TaskManager.StartSTATask(() =>
+			{
+				try
+				{
+					while (_bAbortProgress == false)
+					{
+						var response = Automatic1111.SendGetProgress();
+
+						if (_bAbortProgress)
+							break;
+
+						Invoke((MethodInvoker)delegate
+						{
+							toolStripProgressBar1.Value = (int)(response.progress * 100.0);
+						});
+
+						Thread.Sleep(500);
+					}
+
+					Invoke((MethodInvoker)delegate
+					{
+						toolStripProgressBar1.Visible = false;
+						toolStripProgressBar1.Value = 0;
+						toolStripStatusLabel.Text = "";
+					});
+				}
+				catch (Exception ex)
+				{
+					LogMessage.WriteLine(ex.Message);
+					LogMessage.WriteLine("error: get progress failed");
+				}
+				finally
+				{
+					_bProgress = false;
+				}
+			});
+		}
+
+
+
+
+
 	}
 }
