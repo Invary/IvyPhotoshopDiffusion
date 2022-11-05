@@ -6,7 +6,7 @@ Recently, Automatic1111 changes its API specifications every few days. <br />
 As a result, there are times when an error occurs and the IvyPhotoshopDiffusion does not work. <br />
 In this case, please use the version of Automatic1111 that is a few days old. <br />
 
-Ver108 works on latest version of Automatic1111 (2022/11/04 19:00 UTC)<br />
+Ver108 works on latest version of Automatic1111 (2022/11/05 01:00 UTC)<br />
 
 <br />
 
@@ -56,10 +56,11 @@ latest version of [IvyPhotoshopDiffusion](https://github.com/Invary/IvyPhotoshop
 ###
 5. [Download](https://github.com/Invary/IvyPhotoshopDiffusion/releases) latest version of IvyPhotoshopDiffusion
 6. Extract it to installation folder
+7. At windows 10/11, right-click executable file, and select menu item **`properties`** to **`unlock`** security warning
 ###
-7. Start **`Automatic1111`**
-8. Start **`Adobe Photoshop`**
-9. Start **`IvyPhotoshopDiffusion.exe`** in the installation folder.
+8. Start **`Automatic1111`**
+9. Start **`Adobe Photoshop`**
+10. Start **`IvyPhotoshopDiffusion.exe`** in the installation folder.
 
 <br />
 
