@@ -1,16 +1,6 @@
 # IvyPhotoshopDiffusion for Windows
 
 
-## Attention
-Recently, Automatic1111 changes its API specifications every few days. <br />
-As a result, there are times when an error occurs and the IvyPhotoshopDiffusion does not work. <br />
-In this case, please use the version of Automatic1111 that is a few days old. <br />
-
-Ver109 works on latest version of Automatic1111 (2022/11/06 22:00 UTC)<br />
-
-<br />
-
-
 ##  About
 IvyPhotoshopDiffusion is a tool for generating AI image on Photoshop for Windows.
 The AI generating image process is done by [Stable Diffusion](https://github.com/CompVis/stable-diffusion) and [Automatic1111 Stable Diffusion web UI](https://github.com/AUTOMATIC1111/stable-diffusion-webui).
